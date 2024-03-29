@@ -1,0 +1,146 @@
+/* Contact.css */
+
+/* Set default margin-top for mobile and progressively adjust it for larger screens */
+.div-style {
+  font-family: "Avenir Next LT W02 Regular";
+  background-color: "#EAEFFB";
+  position: 'relative';
+  margin-top: -19%; /* Default for smallest screens */
+}
+
+.div-style {
+  /* Default for the smallest screens not explicitly covered (below 375px) */
+  margin-top: -19%; 
+}
+
+/* For screens larger than 375px */
+@media (min-width: 280px) {
+  .div-style {
+    margin-top: -23%;
+  }
+}
+
+@media (min-width: 376px) {
+  .div-style {
+    margin-top: -19%;
+  }
+}
+
+/* For screens larger than 412px */
+@media (min-width: 413px) {
+  .div-style {
+    margin-top: -15.2%;
+  }
+}
+
+/* For screens larger than 540px */
+@media (min-width: 541px) {
+  .div-style {
+    margin-top: -12%;
+  }
+}
+
+/* For screens larger than 768px */
+@media (min-width: 769px) {
+  .div-style {
+    margin-top: -9%;
+  }
+}
+
+/* For screens larger than 853px */
+@media (min-width: 854px) {
+  .div-style {
+    margin-top: -8%;
+  }
+}
+
+/* For screens larger than 1024px */
+@media (min-width: 1025px) {
+  .div-style {
+    margin-top: -7%;
+  }
+}
+
+/* For screens larger than 1280px */
+@media (min-width: 1280px) {
+  .div-style {
+    margin-top: -5%;
+  }
+}
+
+@media (min-width: 768px) { /* Assuming 'md' starts at 768px */
+    .responsive-flex {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .main-div-contact{
+      width: 50%;
+    }
+   
+  }
+  
+  @media (max-width: 767px) {
+    .responsive-flex {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .main-div-contact{
+      width: 90%;
+    }
+  }
+
+  @media (min-width: 768px) { /* Assuming 'md' starts at 768px */
+    .connect-class{
+      font-size: 32px;
+    }
+   
+  }
+  
+  @media (max-width: 767px) {
+    .connect-class{
+      font-size: 24px;
+    }
+  }
+
+  .red-asterisk .MuiFormLabel-asterisk {
+    color: red; /* Set the color of the asterisk to red */
+  }
+
+  /* Add this to your CSS file */
+  .ask-button {
+    border:  2px solid #7e0696;
+    /* other styles */
+  }
+  
+  .ask-button:hover {
+    border-color: #84c7e8;
+  }
+  
+/* Contact.css */
+input:-webkit-autofill {
+  border: none;
+  -webkit-text-fill-color: currentColor;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+input:-webkit-autofill:hover {
+  border: none;
+  -webkit-text-fill-color: currentColor;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+input:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: currentColor;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+/* For Firefox */
+input:-moz-ui-autofill {
+  border: none;
+  box-shadow: 0 0 0px 1000px white inset;
+}

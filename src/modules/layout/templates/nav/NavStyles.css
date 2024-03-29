@@ -1,0 +1,9 @@
+.dropdown {
+  display: none;
+  position: absolute;
+  /* Add other styles as needed */
+ }
+ 
+ .show-dropdown .dropdown {
+  display: block;
+ }
