@@ -1,0 +1,82 @@
+.product-rail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Allows absolute positioning of child items */
+  }
+  
+  .product-rail-title {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .product-collection {
+    position: relative; /* Relative to this div, we will absolutely position our items */
+    width: 100%;
+    height: auto;
+    min-height: 470px; /* Adjust based on your content */
+  }
+  @media (max-width: 1024px) {
+    .product-collection{
+      min-height: 760px; /* Adjust based on your content */
+    }
+  }
+  @media (max-width: 500px) {
+    .product-collection{
+      min-height: 255px; /* Adjust based on your content */
+    }
+  }
+  .product-item {
+    position: absolute; /* Positioned absolutely within .product-collection */
+    text-align: center;
+  }
+  
+  .product-item img {
+    width: 250px; /* Increase the width as desired */
+    height: auto;
+    max-width: none; /* Override the max-width if necessary */
+  }
+  .container-grow-animation {
+    animation: revealContent 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  }
+  
+  @keyframes revealContent {
+    0% {
+      clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+    }
+    20% {
+      clip-path: polygon(0 0, 100% 0, 100% 10%, 0 10%);
+    }
+    40% {
+      clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%);
+    }
+    60% {
+      clip-path: polygon(0 0, 100% 0, 100% 60%, 0 60%);
+    }
+    80% {
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 90%);
+    }
+    100% {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+  
+
+  
+
+  
+  .product-label {
+    font-size: 24px; /* Adjust the font size as needed */
+  }
+  .image-hidden {
+    opacity: 0;
+    transform: scaleY(0); /* Initially scale down the image */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Transition for the transform and opacity */
+  }
+  
+  .image-visible {
+    opacity: 1;
+    transform: scaleY(1); /* Scale up the image to its full size */
+    /* The transition is defined in the .image-hidden class */
+  }
+  

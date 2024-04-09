@@ -1,0 +1,153 @@
+/* FooterNav.css */
+
+  
+@media (max-width: 767px) {
+    .dropdown-section .dropdown-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+    }
+
+    .dropdown-content {
+      display: block;
+    }
+    .dropdown-section{
+      margin-top: 10%;
+    }
+    .footer-nav-container{
+      margin-bottom: 5%;
+    }
+    .footer-nav-container-md{
+      display: none;
+
+    }
+    .samsung-img,.visa-img{
+        height: 15px;
+        margin-top: 2%;
+    }
+    
+  }
+  @media (max-width: 767px) {
+    .copyright-footer {
+        width: 90%;
+      }
+      .payment-footer{
+        display: flex;
+  
+      }
+      .footer-set{
+        margin-top: 3%;
+        margin-bottom: 5%;
+  
+      }
+  }
+
+  @media (min-width: 768px) {
+    .visa-img{
+        height: auto;
+        margin-bottom: 2%;
+    }
+    .samsung-img{
+        height: auto;
+        margin-bottom: 1%;
+    }
+    .main-footer {
+      display: flex;
+    }
+    .copyright-footer{
+      display: flex;
+      width: 45%;
+
+    }
+    .payment-footer{
+      margin-right: 9%;
+      width: 40%;
+       display: flex;
+       align-items: flex-end;
+       justify-content: flex-end;
+
+    }
+    .site-policy{
+      width: 70%;
+    }
+    .footer-nav-container{
+      display: none;
+    }
+    .option-list {
+      position: relative;
+      color: rgba(0,0,0,0.9);
+      text-decoration: none; /* Remove the default underline */
+      overflow: hidden; /* Ensures the underline doesn't extend outside the link */
+      display: inline-block; /* Allows the pseudo-element to be positioned relative to the link */
+      cursor: pointer;
+
+     }
+     
+     .option-list::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px; /* Thickness of the underline */
+      bottom: 0;
+      left: 0;
+      background-color: #7F3F98; /* Color of the underline */
+      visibility: hidden; /* Hide it by default */
+      transition: all 0.3s ease-in-out;
+     }
+     
+     .option-list:hover::after {
+      visibility: visible; /* Make it visible on hover */
+      width: 100%; /* Full width */
+     }
+     
+     .option-list:hover {
+      color: #7F3F98 !important; /* Change the text color on hover */
+     }
+
+     .option-li {
+      position: relative;
+      display: inline-block; /* This may need adjustment based on your layout */
+      cursor: pointer;
+      padding-bottom: 1px; /* Adjust the padding to ensure the underline doesn't overlap text */
+    }
+    
+    .option-li::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px; /* Thickness of the underline */
+      background-color: #7F3F98; /* Color of the underline */
+      transition: width 0.3s ease-in-out;
+    }
+    
+    .option-li:hover::after {
+      width: 100%;
+    }
+    
+    .option-li:hover {
+      color: #7F3F98 !important; /* Change the text color on hover */
+     }
+     
+  }
+
+  @media (max-width: 767px) {
+    .main-footer {
+      flex-direction: column;
+    }
+    
+   
+  }
+  @media (min-width: 768px) {
+    .main-footer {
+      flex-direction: row;
+    }
+    
+   
+  }

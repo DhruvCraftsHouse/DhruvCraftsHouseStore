@@ -1,0 +1,106 @@
+/* social.css */
+
+/* Set default margin-top for mobile and progressively adjust it for larger screens */
+.social-div-style {
+  font-family: "Avenir Next LT W02 Regular";
+  background-color: "#EAEFFB";
+  position: 'relative';
+  margin-top: -19%; /* Default for smallest screens */
+}
+
+.social-div-style {
+  /* Default for the smallest screens not explicitly covered (below 375px) */
+  margin-top: -19%; 
+}
+
+/* For screens larger than 375px */
+@media (min-width: 280px) {
+  .social-div-style {
+    margin-top: -23%;
+  }
+}
+
+@media (min-width: 376px) {
+  .social-div-style {
+    margin-top: -19%;
+  }
+}
+
+/* For screens larger than 412px */
+@media (min-width: 413px) {
+  .social-div-style {
+    margin-top: -15.2%;
+  }
+}
+
+/* For screens larger than 540px */
+@media (min-width: 541px) {
+  .social-div-style {
+    margin-top: -12%;
+  }
+}
+
+/* For screens larger than 768px */
+@media (min-width: 769px) {
+  .social-div-style {
+    margin-top: -9%;
+  }
+}
+
+/* For screens larger than 853px */
+@media (min-width: 854px) {
+  .social-div-style {
+    margin-top: -8%;
+  }
+}
+
+/* For screens larger than 1024px */
+@media (min-width: 1025px) {
+  .social-div-style {
+    margin-top: -7%;
+  }
+}
+
+/* For screens larger than 1280px */
+@media (min-width: 1280px) {
+  .social-div-style {
+    margin-top: -5%;
+  }
+}
+
+@media (min-width: 768px) {
+    .social-heading {
+      font-size: 36px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .social-heading {
+      font-size: 22px;
+    }
+  }
+
+  @media (min-width: 768px) { /* Assuming 'md' starts at 768px */
+    .social-div{
+      width: 54%;
+    }
+   
+  }
+  
+  @media (max-width: 767px) {
+    .social-div{
+      width: 80%;
+    }
+  }
+  @media (min-width: 768px) { /* Assuming 'md' starts at 768px */
+    .social-main-div{
+      width: 63%;
+    }
+   
+  }
+  
+  @media (max-width: 767px) {
+    .social-main-div{
+      width: 80%;
+    }
+  }
