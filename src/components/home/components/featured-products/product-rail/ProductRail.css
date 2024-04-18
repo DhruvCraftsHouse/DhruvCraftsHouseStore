@@ -14,16 +14,17 @@
     position: relative; /* Relative to this div, we will absolutely position our items */
     width: 100%;
     height: auto;
-    min-height: 470px; /* Adjust based on your content */
+    min-height: 600px; /* Adjust based on your content */
   }
   @media (max-width: 1024px) {
     .product-collection{
-      min-height: 760px; /* Adjust based on your content */
+      min-height: 550px; /* Adjust based on your content */
     }
   }
   @media (max-width: 500px) {
     .product-collection{
-      min-height: 255px; /* Adjust based on your content */
+
+      min-height: 360px; /* Adjust based on your content */
     }
   }
   .product-item {
@@ -37,31 +38,35 @@
     max-width: none; /* Override the max-width if necessary */
   }
   .container-grow-animation {
-    animation: revealContent 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    animation: revealContent 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
   
-  @keyframes revealContent {
+  
+  @keyframes imageReveal {
     0% {
-      clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+      transform: scaleY(0.1);
+      opacity: 0;
+      transform-origin: top;
     }
-    20% {
-      clip-path: polygon(0 0, 100% 0, 100% 10%, 0 10%);
-    }
-    40% {
-      clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%);
-    }
-    60% {
-      clip-path: polygon(0 0, 100% 0, 100% 60%, 0 60%);
-    }
-    80% {
-      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 90%);
+    50% {
+      transform: scaleY(0.5);
+      opacity: 0.5;
     }
     100% {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      transform: scaleY(1);
+      opacity: 1;
+      transform-origin: top;
     }
   }
   
-
+  .reveal-animation {
+    animation: imageReveal 1.5s linear forwards;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+  }
+  
+  
+  
   
 
   

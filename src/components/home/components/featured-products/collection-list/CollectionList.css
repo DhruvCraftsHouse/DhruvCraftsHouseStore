@@ -1,4 +1,43 @@
  /* CSS for hiding scrollbar for Chrome, Safari and Opera */
+
+ /* CollectionList.css */
+.collection-main {
+  scrollbar-width: none;  /* For Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.collection-main::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, and Opera */
+}
+
+ .collection-main {
+   min-height: 400px; /* Adjust based on your content */
+   padding-left: 160px;
+   /* background: green; */
+}
+.custom-cursor {
+  /* Assuming 'cursor.png' is the custom cursor image in your public directory */
+  cursor: url('palm.png'), auto;
+}
+
+@media (max-width: 1024px) {
+  .collection-main{
+    min-height: 450px; /* Adjust based on your content */
+  }
+}
+@media (max-width: 768px) {
+  .collection-main{
+    min-height: 350px; /* Adjust based on your content */
+  }
+}
+@media (max-width: 500px) {
+  .collection-main{
+    min-height: 180px; /* Adjust based on your content */
+    padding-bottom: 10%;
+    padding-left: 10px;
+  }
+}
+
  .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }

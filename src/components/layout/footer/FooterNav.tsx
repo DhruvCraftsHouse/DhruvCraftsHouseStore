@@ -86,7 +86,7 @@ const FooterNav = () => {
     <>
     {isNavigating && <LoadingSpinner />}
     
-    <div className="border-t border-ui-border-base w-screen">
+    <div className="border-t border-ui-border-base w-screen" style={{width:"99.5%"}}>
       <div className="content-container flex flex-col">
         
       <div className="main-footer flex gap-y-1 sm:gap-y-2 md:gap-y-4 xsmall:flex-row items-start justify-between py-10" style={{width:"88%", marginLeft:"3%",marginTop:"2%"}}>

@@ -241,7 +241,7 @@ useEffect(() => {
                 </form>
 
                       
-                <ul className="flex flex-wrap overflow-y-auto custom-scrollbar" style={{ listStyle: "none", maxHeight: "60vh" }}>
+                <ul className="flex flex-wrap overflow-y-auto custom-scrollbar" style={{ listStyle: "none", maxHeight: "90vh" }}>
       {products
         .filter((product) => {
           const titleMatch = product.title?.toLowerCase().includes(searchText.toLowerCase());
@@ -279,28 +279,30 @@ useEffect(() => {
 
             </Popover>
             <style>
-                {`input:focus {
-          outline: none;
+                {` .mobile-search-component input:focus {
+            outline: none;
         }
-        /* Custom scrollbar styles */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 8px; /* Adjust scrollbar width */
-}
+        /* Scoped Custom scrollbar styles */
+        .mobile-search-component .custom-scrollbar::-webkit-scrollbar {
+            width: 1px; /* Further reduce the width of the scrollbar if needed */
+        }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1); /* Adjust track background */
-  border-radius: 10px; /* Rounded corners for the track */
-}
+        .mobile-search-component .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
 
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: white; /* White scrollbar thumb */
-  border-radius: 10px; /* Rounded corners for the thumb */
-}
+        .mobile-search-component .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: white;
+            border-radius: 10px;
+            width: 1px;
+            /* Optionally reduce the size (height in the visual context) */
+            height: 1px; /* You can adjust this value */
+        }
 
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #f0f0f0; /* Lighter color on hover */
-}
-
+        .mobile-search-component .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #f0f0f0;
+        }
         `}
             </style>
 

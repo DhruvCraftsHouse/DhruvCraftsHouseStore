@@ -163,13 +163,12 @@ useEffect(() => {
   <span>{isSideMenuOpen ? "SEARCH" : "Search"}</span>
 </button>
 
-
-                <Popover.Panel
-                    static
-                    ref={panelRef}
-                    className={`flex flex-col fixed right-0 h-full w-96 z-50 text-sm m-2 backdrop-blur-2xl ${isPopoverOpen ? "" : "hidden"
-                        }`}
-                >
+<Popover.Panel
+  static
+  ref={panelRef}
+  className={`fixed top-0 right-0 bottom-0 z-50 text-sm m-0 backdrop-blur-2xl ${isPopoverOpen ? "" : "hidden"}`}
+  style={{ height: '100vh', width: "40vw" }}
+>
 
                     <div className="flex flex-col  bg-[rgba(0,0,0,0.9)] justify-between p-9 text-white" style={{ color: "white", paddingBottom:"75%" }}>
                         <button
@@ -228,14 +227,14 @@ useEffect(() => {
                 </form>
 
                       
-                <ul className="flex flex-wrap overflow-y-auto custom-scrollbar" style={{ listStyle: "none", maxHeight: "60vh" }}>
+                <ul className="flex flex-wrap overflow-y-auto custom-scrollbar" style={{ listStyle: "none", maxHeight: "90vh" }}>
       {products
         .filter((product) => {
           const titleMatch = product.title?.toLowerCase().includes(searchText.toLowerCase());
           const tagMatch = product.tags?.some(tag => tag.value?.toLowerCase().includes(searchText.toLowerCase()));
           return titleMatch || tagMatch;
         })
-        .slice(0, 5)
+        .slice(0, 6)
         .map((product) => (
           <li
             key={product.id}

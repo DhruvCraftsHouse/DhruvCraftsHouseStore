@@ -33,6 +33,7 @@
     "react-instantsearch-hooks-web": "^6.47.3",
     "react-intersection-observer": "^9.8.1",
     "reactstrap": "^9.2.2",
+    "styled-components": "^6.1.8",
     "tailwindcss-radix": "^3.0.3"
   },
   "devDependencies": {
