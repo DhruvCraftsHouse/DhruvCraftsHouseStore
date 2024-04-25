@@ -137,11 +137,11 @@ type Product = {
     images: Image[]; // This is the new part
 };
 
-type FirstCollectionProps = {
-  products: Product[];
-};
-
-const ThirdProductRail: React.FC<FirstCollectionProps> = ({ products }) => {
+interface ThirdProductRailProps {
+    product: Product;
+  }
+  
+  const ThirdProductRail: React.FC<ThirdProductRailProps> = ({ product }) => {
     const [isVisible, setIsVisible] = useState(false);
     const [isImageVisible, setIsImageVisible] = useState(false);
     const [isTitleVisible, setIsTitleVisible] = useState(false);
@@ -202,7 +202,7 @@ const ThirdProductRail: React.FC<FirstCollectionProps> = ({ products }) => {
       return () => window.removeEventListener('resize', updateContainerHeight);
     }, []);
 
-    const firstProduct = products[0];
+    const firstProduct = product;
   
     return (
         <Container style={{ paddingTop: "",paddingBottom: "7%"}}>

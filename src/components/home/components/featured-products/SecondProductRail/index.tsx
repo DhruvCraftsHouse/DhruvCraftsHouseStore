@@ -106,6 +106,11 @@ const Subtitle = styled.h3`
   max-width: 300px; // Adjust the width as needed for your design
   word-wrap: break-word; // Ensures text breaks into new lines if too long
   line-height: 1.1; // Adjust line-height for better readability
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
 //   animation: ${fadeInScale} 100ms ease-out forwards; // Apply the fadeInScale animation
 // animation: ${revealFromTop} 5s ease-out forwards;
 
@@ -120,6 +125,11 @@ const Description = styled.h3`
   color: rgba(0,0,0,0.9);
   word-wrap: break-word; // Ensures text breaks into new lines if too long
   line-height: 1.4; // Adjust line-height for better readability
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
 //   animation: ${fadeInScale} 100ms ease-out forwards; // Apply the fadeInScale animation
 // animation: ${revealFromTop} 1s ease-out forwards;
 
@@ -214,11 +224,11 @@ type Product = {
     collection_name: string;
 };
 
-type FirstCollectionProps = {
-  products: Product[];
-};
-
-const SecondProductRail: React.FC<FirstCollectionProps> = ({ products }) => {
+interface SecondProductRailProps {
+    product: Product;
+  }
+  
+  const SecondProductRail: React.FC<SecondProductRailProps> = ({ product }) => {
     const [isVisible, setIsVisible] = useState(false);
     const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
     const [isTitleVisible, setIsTitleVisible] = useState(false);
@@ -293,7 +303,7 @@ const SecondProductRail: React.FC<FirstCollectionProps> = ({ products }) => {
           setTimeout(() => setIsCollectionVisible(true), 500); // Set after 2800ms
           setTimeout(() => setIsImageVisible(true), 400); // Set after 3420ms
           setTimeout(() => setIsTitleVisible(true), 900); // Set after 4420ms
-          console.log('isImageVisible', isImageVisible)
+        //   console.log('isImageVisible', isImageVisible)
 
         }
       }, { threshold: 0.5 });
@@ -323,7 +333,7 @@ const SecondProductRail: React.FC<FirstCollectionProps> = ({ products }) => {
           setTimeout(() => setIsNarrowCollectionVisible(true), 500); // Set after 2800ms
           setTimeout(() => setIsNarrowImageVisible(true), 800); // Set after 3420ms
           setTimeout(() => setIsNarrowSubtitleVisible(true), 1200); // Set after 4420ms
-          console.log('isNarrowImageVisible', isNarrowImageVisible)
+        //   console.log('isNarrowImageVisible', isNarrowImageVisible)
         }
       }, { threshold: 0 });
   
@@ -368,9 +378,9 @@ const SecondProductRail: React.FC<FirstCollectionProps> = ({ products }) => {
         return () => window.removeEventListener('resize', updateContainerHeight);
       }, []);
   
-    const firstProduct = products[0];
+    const firstProduct = product;
   
-console.log('isNarrowScreen', isNarrowScreen)
+// console.log('isNarrowScreen', isNarrowScreen)
 // console.log('isVisible', isVisible)
 
     if (isNarrowScreen) {

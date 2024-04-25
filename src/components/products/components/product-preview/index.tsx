@@ -10,10 +10,21 @@ const ProductPreview = ({
   thumbnail,
   price,
   isFeatured,
-}: ProductPreviewType) => (
+}: ProductPreviewType) => {
+
+    // Helper function to convert the thumbnail URL
+const convertThumbnailUrl = (url: string): string => {
+  if (!url) return '';
+  const baseUrl = 'https://dhruvcraftshouse.com/backend/uploads/';
+  const filename = url.split('/').pop() || ''; // Ensure filename is not undefined
+  return `${baseUrl}${filename}`;
+};
+
+const thumbnailUrl = thumbnail ? convertThumbnailUrl(thumbnail) : '';
+  return(
   <Link href={`/products/${handle}`} className="group">
     <div>
-      <Thumbnail thumbnail={thumbnail} size="full" isFeatured={isFeatured} />
+      <Thumbnail thumbnail={thumbnailUrl} size="square" isFeatured={isFeatured} />
       <div className="flex txt-compact-medium mt-4 justify-between">
         <Text className="text-ui-fg-subtle">{title}</Text>
         <div className="flex items-center gap-x-2">
@@ -40,5 +51,6 @@ const ProductPreview = ({
     </div>
   </Link>
 )
+}
 
 export default ProductPreview

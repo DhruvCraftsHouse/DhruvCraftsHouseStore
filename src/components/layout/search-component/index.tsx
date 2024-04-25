@@ -72,7 +72,7 @@ useEffect(() => {
                       'http://localhost:9000',
                       'https://dhruvcraftshouse.com/backend'
                   );
-                  console.log(newThumbnailUrl); // Log the new thumbnail URL to the console
+                  // console.log(newThumbnailUrl); // Log the new thumbnail URL to the console
                   return { ...product, thumbnail: newThumbnailUrl };
               }
               return product;

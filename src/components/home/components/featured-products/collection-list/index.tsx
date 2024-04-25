@@ -274,6 +274,11 @@ interface AnimatedProps {
 `;
 
 const AnimatedSubtitle = styled.p<AnimatedProps>`
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 4;
+overflow: hidden;
+text-overflow: ellipsis;
  animation: ${fadeInScale} 2s ease-out forwards;
  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
  transform: ${({ isVisible }) => (isVisible ? 'scale(1)' : 'scale(0.9)')};
@@ -309,7 +314,7 @@ const SubtitleContainer = styled.div`
       <div style={{ marginTop:"-35%",marginLeft: "-8%", width: "15%", borderTop:"1px solid #B1BDC2", zIndex: 1 }}></div>
 
       <div className="ml-2" style={{ display: "flex"}}>
-  <div style={{ width: "220px",height:"200px" }}> {/* Set a constant width here */}
+  <div style={{ width: "160px",height:"200px" }}> {/* Set a constant width here */}
     {isTitleVisible && (
       <AnimatedTitle isVisible={isTitleVisible} style={{ fontSize: "20px", whiteSpace: 'normal',  textAlign:"left",width:"160px" }}>{title}</AnimatedTitle>
     )}

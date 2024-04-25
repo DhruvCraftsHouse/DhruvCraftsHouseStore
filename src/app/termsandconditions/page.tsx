@@ -1,3 +1,4 @@
+"use client";
 import HeadingPage from "./components/headingpage"; 
 import SecondPage from "./components/secondpage"
 

@@ -1,0 +1,99 @@
+/* ProductInfoStyles.css */
+
+
+.success-message {
+    padding: 10px;
+    background-color: #d4edda; /* Light green background */
+    color: #155724; /* Dark green text */
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 10px;
+  }
+   .submit-comment-button {
+    position: absolute;
+    right: 10px;
+    bottom: -30px;
+    background-color: #0088cc; /* Telegram blue color */
+    border: none;
+    border-radius: 50%;
+    width: 40px; /* Adjust as needed */
+    height: 40px; /* Adjust as needed */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .paper-plane-icon {
+    width: 0; 
+    height: 0; 
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 10px solid white;
+    transform: rotate(45deg);
+  }
+  .starMain {
+    font-size: 24px; /* Adjust the size as needed */
+    position: relative;
+    display: inline-block;
+  }
+  
+  .full-starMain {
+    color: yellow;
+  }
+  
+  .half-starMain {
+    color: gray; /* Color for the empty part */
+  }
+  
+  .half-starMain::before {
+    content: '★';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%; /* Half the width of the star */
+    overflow: hidden;
+    color: yellow; /* Color for the filled part */
+    
+  }
+  
+  .empty-starMain {
+    color: gray;
+  }
+  .comment-box-container {
+    position: relative;
+    margin-bottom: 40px; /* Adjust as needed to avoid overlap with content below */
+  }
+
+  .comment-box {
+    width: 100%;
+    padding: 12px;
+    padding-bottom: 40px; /* Make space for the submit button */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none; /* Optional: Disable resizing of textarea */
+  }
+
+  .submit-comment-button {
+    position: absolute;
+    right: 10px;
+    bottom: 10px; /* Adjust as needed */
+    background-color: #0088cc; /* Telegram blue color */
+    border: none;
+    border-radius: 50%;
+    width: 30px; /* Adjust as needed */
+    height: 30px; /* Adjust as needed */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .paper-plane-icon {
+    width: 0; 
+    height: 0; 
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 10px solid white;
+    transform: rotate(45deg);
+  }

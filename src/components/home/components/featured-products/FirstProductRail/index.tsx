@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
+import { useRouter } from "next/navigation"
+
 
 // Define animations using styled-components
 const fadeInScale = keyframes`
@@ -358,7 +360,9 @@ type Product = {
   id: string;
   title: string;
   subtitle: string;
+  handle: string;
   thumbnail: string;
+  collection_name: string;
 };
 
 type FirstCollectionProps = {
@@ -374,6 +378,8 @@ const FirstProductRail: React.FC<FirstCollectionProps> = ({ products }) => {
     const [isSecondTitleVisible, setIsSecondTitleVisible] = useState(false);
     const [isSecondSubtitleVisible, setIsSecondSubtitleVisible] = useState(false);
     const [containerHeight, setContainerHeight] = useState('95vh'); // Default height
+
+    // console.log('FirstProductRail products', products)
 
     
     const h1Ref = useRef(null);
@@ -406,7 +412,7 @@ const FirstProductRail: React.FC<FirstCollectionProps> = ({ products }) => {
     }, [h1Ref]);
   
   useEffect(()=>{
- console.log('isImageVisible', isFirstImageVisible)
+//  console.log('isImageVisible', isFirstImageVisible)
   },[isVisible])
   // UseEffect to safely handle window object
   useEffect(() => {
@@ -440,6 +446,15 @@ const FirstProductRail: React.FC<FirstCollectionProps> = ({ products }) => {
   }, []);
     const firstProduct = products[0];
     const secondProduct = products[1] || products[0];
+
+    const router = useRouter();
+
+  // Define click handler to navigate to the product handle
+  const handleClick = (handle: string) => {
+    // Assuming the handle is stored in the alt attribute of the image
+    // Navigate to the corresponding handle when clicked
+    router.push(`/products/${handle}`);
+  };
   
     return (
       <Container  style={{ paddingTop: "4%", height: containerHeight }}>
@@ -449,12 +464,12 @@ const FirstProductRail: React.FC<FirstCollectionProps> = ({ products }) => {
   src={secondProduct.thumbnail}
   alt={secondProduct.title}
   isFirstProduct={false} // Pass the isFirstProduct prop with the appropriate value
-  style={{ animationDelay: '' }}
-/>
+  onClick={() => handleClick(secondProduct.handle)} // Adding click handler
+  />
           )}
           {isSecondTitleVisible && <TitleEndAligned style={{ animationDelay: '' }} >{secondProduct.title}</TitleEndAligned>}
-          {isSecondSubtitleVisible && secondProduct.subtitle && (
-            <SubtitleEndAligned>{secondProduct.subtitle}</SubtitleEndAligned>
+          {isSecondSubtitleVisible && secondProduct.collection_name && (
+            <SubtitleEndAligned>{secondProduct.collection_name}</SubtitleEndAligned>
           )}  
         </EndAlignedColumn>
         <StartAlignedColumn ref={h1Ref} >
@@ -464,11 +479,13 @@ const FirstProductRail: React.FC<FirstCollectionProps> = ({ products }) => {
   alt={firstProduct.title}
   isFirstProduct={true} // Pass the isFirstProduct prop with the appropriate value
   style={{ animationDelay: '0s' }}
+  onClick={() => handleClick(firstProduct.handle)} // Adding click handler
+
 />
           )}
           {isFirstTitleVisible && <Title style={{ animationDelay: '' }} >{firstProduct.title}</Title>}
-          {isFirstSubtitleVisible && firstProduct.subtitle && (
-            <Subtitle>{firstProduct.subtitle}</Subtitle>
+          {isFirstSubtitleVisible && firstProduct.collection_name && firstProduct.collection_name!='' && (
+            <Subtitle>{firstProduct.collection_name}</Subtitle>
           )}
         </StartAlignedColumn>
       </Container>

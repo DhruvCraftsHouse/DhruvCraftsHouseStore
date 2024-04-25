@@ -62,6 +62,30 @@ export async function getProductByHandle(
   }
 }
 
+
+// Assuming PricedProduct has a 'handle' property
+// In your `lib/data` file where `getAllProductHandles()` is defined
+
+export async function getAllProductHandles(): Promise<string[]> {
+  console.log("Fetching all product handles...");
+  if (MEDUSA_V2_ENABLED) {
+    const response = await fetch(`${API_BASE_URL}/api/products`)
+      .then(res => res.json())
+      .catch(err => { throw err; });
+
+    console.log("Handles fetched:", response.products.map((product: PricedProduct) => product.handle));
+    return response.products.map((product: PricedProduct) => product.handle);
+  } else {
+    const response = await medusaRequest("GET", "/products")
+      .then(res => res.body)
+      .catch(err => { throw err; });
+
+    console.log("Handles fetched:", response.products.map((product: PricedProduct) => product.handle));
+    return response.products.map((product: PricedProduct) => product.handle);
+  }
+}
+
+
 /**
  * Fetches a list of products, using the Medusa API or the Medusa Product Module, depending on the feature flag.
  * @param pageParam (number) - The offset of the products to retrieve
