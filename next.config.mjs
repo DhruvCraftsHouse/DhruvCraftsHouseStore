@@ -4,7 +4,7 @@ const nextConfig = {
         domains: ['localhost', 'dhruvcraftshouse.com'],
         unoptimized: true, // Disable the Image Optimization API
     },
-    output: 'export',
+    // output: 'export',
     trailingSlash: true,
     typescript: {
         // !! WARN !!
