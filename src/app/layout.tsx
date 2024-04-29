@@ -1,37 +1,21 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Footer from "@/components/layout/footer";
-import Nav from "@/components/layout/nav"
 import Providers from "@/lib/providers";
-import { Suspense } from "react";
-
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "DhruvCraftsHouse",
-  description: "Dhruv Crafts House",
-};
+import "./globals.css"
+import React, { useState, useEffect, Suspense } from 'react';
+import LoadingSpinner from '@/components/loader'; // Import your loading spinner component
+import "./globals.css"
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      {/* <Providers > */}
-      <body className={inter.className}>
-      {/* <Suspense> */}
-
+    <html lang="en" data-mode="light">
+      <body>
         <Providers>
-        <Nav />
-        {children}
-        <Footer />
+        <Suspense fallback={<LoadingSpinner />}><main className="relative">{children}</main></Suspense>
         </Providers>
-        {/* </Suspense> */}
       </body>
-      {/* </Providers> */}
     </html>
-  );
+  )
 }

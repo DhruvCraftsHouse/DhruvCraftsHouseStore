@@ -1,0 +1,94 @@
+// Import axios, a promise-based HTTP client, for making HTTP requests
+import { MEDUSA_BACKEND_URL } from '@/lib/config';
+import axios from 'axios';
+
+// Define an asynchronous function to get the discount list
+export const getDiscountList = async (productId) => {
+  try {
+    // console.log('inside getDiscountList',productId);
+    
+    // Making a GET request using axios to fetch the discount list
+    const response = await axios.get(`${MEDUSA_BACKEND_URL}/store/discountlist`);
+
+    // Extract the discounts array from the response data
+    const discountsArray = response.data.discounts;
+
+    // console.log('discountsArray:', discountsArray);
+
+    // Filter discounts based on the conditions
+    const filteredDiscounts = discountsArray.filter((discount) => {
+      // Check if the discount has a 'rule' attribute
+      if (discount.rule) {
+        // Check if the 'rule' attribute has 'conditions' array with at least one element of 'type' attribute as 'products'
+        if (Array.isArray(discount.rule.conditions) && discount.rule.conditions.some((condition) => condition.type === 'products')) {
+          return true; // Include this discount in the filtered list
+        }
+      }
+      return false; // Exclude this discount
+    });
+
+    // Logging the filtered discounts for debugging purposes
+    // console.log("Filtered Discounts:", filteredDiscounts);
+
+// Extract discount_id, condition_id, code, ends_at, value, and type from each filtered discount
+// ...
+
+// Extract discount_id, condition_id, code, ends_at, value, and type from each filtered discount
+const discountInfo = filteredDiscounts.map((discount) => {
+    const discount_id = discount.id;
+    const condition_id = discount.rule.conditions.find((condition) => condition.type === 'products').id;
+    const code = discount.code;
+    const ends_at = discount.ends_at;
+    const value = discount.rule.value; // Extract 'value' from the 'rule' object
+    let type = discount.rule.type; // Extract 'type' from the 'rule' object
+  
+    // Check if the type is "percentage" and set it to "%"
+    if (type.toLowerCase() === 'percentage') {
+      type = '%';
+    }
+  
+    return { discount_id, condition_id, code, ends_at, value, type };
+  });
+  
+  // ...
+  
+  
+
+    // Logging the extracted discount information
+    // console.log("Discount Information:", discountInfo);
+
+// Call the productDiscount API for each discountInfo
+for (const info of discountInfo) {
+  const { discount_id, condition_id, code, ends_at, value, type } = info;
+  const apiURL = `${MEDUSA_BACKEND_URL}/store/productDiscount?discount_id=${discount_id}&conditionId=${condition_id}`;
+
+  // Making GET request to the productDiscount API
+  const productDiscountResponse = await axios.get(apiURL);
+
+  // Logging the response data
+  // console.log(`Response for discount_id=${discount_id}, condition_id=${condition_id}:`, productDiscountResponse.data.products);
+
+  // Check if productId matches with the id attribute of any product in productDiscountResponse
+  const matchingProduct = productDiscountResponse.data.products.find((product) => product.id === productId);
+
+  // If a matching product is found, log the product.id and productId
+  if (matchingProduct) {
+    // Return info along with id and title attributes of matchingProduct
+    return { ...info, id: matchingProduct.id, title: matchingProduct.title };
+  } else {
+    console.log(`No matching product found for discount_id=${discount_id}, condition_id=${condition_id}`);
+  }
+}
+
+
+// Return null if no matching product is found
+return null;
+
+   
+    // Return the extracted information
+    return discountInfo;
+  } catch (error) {
+    // Logging any errors that occur during the axios request
+    console.error("Error:", error);
+  }
+};

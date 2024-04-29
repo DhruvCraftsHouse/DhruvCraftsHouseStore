@@ -17,6 +17,13 @@ const CartDropdown = () => {
   const { deleteItem } = useStore()
   const { state, open, close } = useCartDropdown()
 
+  const transformThumbnailUrl = (url: string | null): string => {
+    if (!url) return '/default-thumbnail.jpg'; // Return a default image URL if no URL is provided
+    return url.replace("http://localhost:9000/uploads", "https://dhruvcraftshouse.com/backend/uploads");
+  };
+  
+  
+  console.log('items cart', items)
   return (
     <div className="h-full z-50" onMouseEnter={open} onMouseLeave={close}>
       <Popover className="relative h-full">
@@ -59,7 +66,7 @@ const CartDropdown = () => {
                           href={`/products/${item.variant.product.handle}`}
                           className="w-24"
                         >
-                          <Thumbnail thumbnail={item.thumbnail} size="square" />
+      <Thumbnail thumbnail={transformThumbnailUrl(item.thumbnail)} size="square" />
                         </Link>
                         <div className="flex flex-col justify-between flex-1">
                           <div className="flex flex-col flex-1">

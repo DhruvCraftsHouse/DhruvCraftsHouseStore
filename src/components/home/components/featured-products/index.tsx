@@ -10,7 +10,7 @@ import CollectionList from "./collection-list";
 import { MEDUSA_BACKEND_URL } from "@/lib/config";
 
 const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 });
-
+console.log('MEDUSA_BACKEND_URL', MEDUSA_BACKEND_URL)
 type Image = {
   id: string;
   url: string;
