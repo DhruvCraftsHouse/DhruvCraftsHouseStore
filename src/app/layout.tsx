@@ -2,7 +2,6 @@ import Providers from "@/lib/providers";
 import "./globals.css"
 import React, { useState, useEffect, Suspense } from 'react';
 import LoadingSpinner from '@/components/loader'; // Import your loading spinner component
-import "./globals.css"
 
 export default function RootLayout({
   children,

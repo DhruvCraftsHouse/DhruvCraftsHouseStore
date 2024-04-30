@@ -11,6 +11,7 @@ import { usePathname } from 'next/navigation'
 import SideMenu from '../side-menu'
 import CartDropdown from '../cart-dropdown'
 import AccountDropdown from '../account-dropdown'
+import WishlistDropdown from '../wishlist-dropdown'
 
 
 const Nav = () => {
@@ -98,9 +99,11 @@ const Nav = () => {
               />
             )} */}
               <SearchComponent isSideMenuOpen={isSideMenuOpen} />
-              <Link className="" href="/wishlist">
+              {/* <Link className="" href="/wishlist">
               Wishlist
-            </Link>
+            </Link> */}
+            <WishlistDropdown isSideMenuOpen={isSideMenuOpen} />
+
             <AccountDropdown />
               {/* <Link className="" href="/account">
               Account

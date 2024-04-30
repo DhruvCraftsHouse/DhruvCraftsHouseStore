@@ -1,0 +1,50 @@
+/* WishlistDropdown.css */
+
+.wishlist-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+  }
+  .wishlist-item .thumbnail {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  .wishlist-item .title {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .wishlist-item .delete-button {
+    display: flex;
+    align-items: center;
+    color: #6B7280;
+  }
+  .relative {
+    position: relative;
+  }
+  .avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid black; /* If the border color is not black in the image, adjust this value */
+    padding: 0; /* Remove padding to only rely on width and height for size */
+    position: absolute;
+    right: -15px; /* Position to the right of the text */
+    top: 50%; /* Center vertically relative to the parent */
+    transform: translate(50%, -50%); /* Center the circle relative to its own size */
+    font-size: 11px; /* Adjust to match the size in the image */
+    font-weight: 500;
+    width: 16px; /* Width of the circle, adjust as needed */
+    height: 16px; /* Height of the circle, adjust as needed */
+    text-align: center;
+    line-height: 20px; /* Adjust line-height to vertically center the text in the circle */
+  }
+  
+  

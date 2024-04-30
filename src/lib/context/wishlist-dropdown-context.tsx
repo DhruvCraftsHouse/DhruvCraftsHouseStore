@@ -66,11 +66,9 @@ export const WishlistDropdownContextProvider = ({ children }: { children: ReactN
     const timedOpen = () => {
         open()
 
-        const timer = window.setTimeout(() => {
-            close();
-        }, 5000);
-        
-        setActiveTimer(timer)
+        const timer = window.setTimeout(close, 5000);
+
+    setActiveTimer(timer)
     }
 
     const openAndCancel = () => {

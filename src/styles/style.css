@@ -1,0 +1,47 @@
+@font-face {
+    font-family: "Avenir Next LT W02 Regular";
+    src: url("https://db.onlinewebfonts.com/t/be9a43357e0fe07642191e4b32995385.eot");
+    src: url("https://db.onlinewebfonts.com/t/be9a43357e0fe07642191e4b32995385.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/be9a43357e0fe07642191e4b32995385.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/be9a43357e0fe07642191e4b32995385.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/be9a43357e0fe07642191e4b32995385.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/be9a43357e0fe07642191e4b32995385.svg#Avenir Next LT W02 Regular")format("svg");
+}
+
+@font-face {
+  font-family: "Warnock Pro Display";
+  src: url("https://db.onlinewebfonts.com/t/a8c1f086a54b845a6f128a35818e0b02.eot");
+  src: url("https://db.onlinewebfonts.com/t/a8c1f086a54b845a6f128a35818e0b02.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/a8c1f086a54b845a6f128a35818e0b02.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/a8c1f086a54b845a6f128a35818e0b02.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/a8c1f086a54b845a6f128a35818e0b02.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/a8c1f086a54b845a6f128a35818e0b02.svg#Warnock Pro Display")format("svg");
+}
+@font-face {
+  font-family: "Avenir LT Pro 35 Light";
+  src: url("https://db.onlinewebfonts.com/t/e5f78b4fb90a80a32be156470cbfead1.eot");
+  src: url("https://db.onlinewebfonts.com/t/e5f78b4fb90a80a32be156470cbfead1.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/e5f78b4fb90a80a32be156470cbfead1.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/e5f78b4fb90a80a32be156470cbfead1.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/e5f78b4fb90a80a32be156470cbfead1.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/e5f78b4fb90a80a32be156470cbfead1.svg#Avenir LT Pro 35 Light")format("svg");
+}
+  
+@font-face {
+  font-family: "AvenirNextCyr-Regular";
+  src: url("https://db.onlinewebfonts.com/t/11d164da9b46e6f7955e396757e5ca70.eot");
+  src: url("https://db.onlinewebfonts.com/t/11d164da9b46e6f7955e396757e5ca70.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/11d164da9b46e6f7955e396757e5ca70.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/11d164da9b46e6f7955e396757e5ca70.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/11d164da9b46e6f7955e396757e5ca70.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/11d164da9b46e6f7955e396757e5ca70.svg#AvenirNextCyr-Regular")format("svg");
+}
+@font-face {
+    font-family: "Futura LT W01 Medium";
+    src: url("https://db.onlinewebfonts.com/t/77d394fa0c1103c648f880b77cb4a32f.eot");
+    src: url("https://db.onlinewebfonts.com/t/77d394fa0c1103c648f880b77cb4a32f.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/77d394fa0c1103c648f880b77cb4a32f.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/77d394fa0c1103c648f880b77cb4a32f.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/77d394fa0c1103c648f880b77cb4a32f.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/77d394fa0c1103c648f880b77cb4a32f.svg#Futura LT W01 Medium")format("svg");
+}

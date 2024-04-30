@@ -2071,6 +2071,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-modal@^3.16.3":
+  version "3.16.3"
+  resolved "https://registry.npmjs.org/@types/react-modal/-/react-modal-3.16.3.tgz"
+  integrity sha512-xXuGavyEGaFQDgBv4UVm8/ZsG+qxeQ7f77yNrW3n+1J6XAstUy5rYHeIHPh1KzsGc6IkCIdu6lQ2xWzu1jBTLg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-toastify@^4.1.0":
   version "4.1.0"
   resolved "https://registry.npmjs.org/@types/react-toastify/-/react-toastify-4.1.0.tgz"
@@ -3920,6 +3927,11 @@ execa@^5.1.1:
     onetime "^5.1.2"
     signal-exit "^3.0.3"
     strip-final-newline "^2.0.0"
+
+exenv@^1.2.0:
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/exenv/-/exenv-1.2.2.tgz"
+  integrity sha512-Z+ktTxTwv9ILfgKCk32OX3n/doe+OcLTRtqK9pcL+JsP3J1/VW8Uvl4ZjLlKqeW4rzK4oesDOGMEMRIZqtP4Iw==
 
 express-session@^1.17.3:
   version "1.18.0"
@@ -6397,6 +6409,11 @@ raw-body@2.5.2:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+react-confirm-alert@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.npmjs.org/react-confirm-alert/-/react-confirm-alert-3.0.6.tgz"
+  integrity sha512-rplP6Ed9ZSNd0KFV5BUzk4EPQ77BxsrayllBXGFuA8xPXc7sbBjgU5KUrNpl7aWFmP7mXRlVXfuy1IT5DbffYw==
+
 react-country-flag@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/react-country-flag/-/react-country-flag-3.1.0.tgz"
@@ -6412,7 +6429,7 @@ react-day-picker@^8.8.0:
   resolved "https://registry.npmjs.org/react-day-picker/-/react-day-picker-8.10.0.tgz"
   integrity sha512-mz+qeyrOM7++1NCb1ARXmkjMkzWVh2GL9YiPbRjKe0zHccvekk4HE+0MPOZOrosn8r8zTHIIeOUXTmXRqmkRmg==
 
-"react-dom@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16 || ^17 || ^18", "react-dom@^16.8 || ^17.0 || ^18.0", "react-dom@^16.8.0 || ^17 || ^18", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react-dom@^17.0.0 || ^18.0.0", react-dom@^18, react-dom@^18.0.0, react-dom@^18.2.0, "react-dom@>= 16.8.0", "react-dom@>= 16.8.0 < 19", react-dom@>=16.6.0, react-dom@>=16.8, react-dom@>=16.8.0, "react-dom@>=16.8.6 || ^17.0.0 || ^18.0.0", react-dom@>=18:
+"react-dom@^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18", "react-dom@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16 || ^17 || ^18", "react-dom@^16.8 || ^17.0 || ^18.0", "react-dom@^16.8.0 || ^17 || ^18", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react-dom@^17.0.0 || ^18.0.0", react-dom@^18, react-dom@^18.0.0, react-dom@^18.2.0, "react-dom@>= 16.8.0", "react-dom@>= 16.8.0 < 19", react-dom@>=10.0.0, react-dom@>=16.6.0, react-dom@>=16.8, react-dom@>=16.8.0, "react-dom@>=16.8.6 || ^17.0.0 || ^18.0.0", react-dom@>=18:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -6463,6 +6480,21 @@ react-is@^18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
+
+react-lifecycles-compat@^3.0.0:
+  version "3.0.4"
+  resolved "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz"
+  integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-modal@^3.16.1:
+  version "3.16.1"
+  resolved "https://registry.npmjs.org/react-modal/-/react-modal-3.16.1.tgz"
+  integrity sha512-VStHgI3BVcGo7OXczvnJN7yT2TWHJPDXZWyI/a0ssFNhGZWsPmB8cF0z33ewDXq4VfYMO1vXgiv/g8Nj9NDyWg==
+  dependencies:
+    exenv "^1.2.0"
+    prop-types "^15.7.2"
+    react-lifecycles-compat "^3.0.0"
+    warning "^4.0.3"
 
 react-otp-input@^3.1.1:
   version "3.1.1"
@@ -6537,7 +6569,7 @@ react-transition-group@^4.4.2, react-transition-group@^4.4.5:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-"react@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16 || ^17 || ^18", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18.0.0", "react@^16.x || ^17.x || ^18.x", "react@^17.0.0 || ^18.0.0", react@^18, react@^18.0.0, react@^18.2.0, "react@>= 16.8.0", "react@>= 16.8.0 < 19", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16, react@>=16.0.0, react@>=16.3, react@>=16.6.0, react@>=16.8, react@>=16.8.0, "react@>=16.8.6 || ^17.0.0 || ^18.0.0", react@>=18:
+"react@^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18", "react@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16 || ^17 || ^18", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18.0.0", "react@^16.x || ^17.x || ^18.x", "react@^17.0.0 || ^18.0.0", react@^18, react@^18.0.0, react@^18.2.0, "react@>= 16.8.0", "react@>= 16.8.0 < 19", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16, react@>=16.0.0, react@>=16.3, react@>=16.6.0, react@>=16.8, react@>=16.8.0, "react@>=16.8.6 || ^17.0.0 || ^18.0.0", react@>=18, react@>=18.0.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
@@ -7685,7 +7717,7 @@ vary@^1, vary@~1.1.2:
   resolved "https://registry.npmjs.org/vary/-/vary-1.1.2.tgz"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
-warning@^4.0.2:
+warning@^4.0.2, warning@^4.0.3:
   version "4.0.3"
   resolved "https://registry.npmjs.org/warning/-/warning-4.0.3.tgz"
   integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==
