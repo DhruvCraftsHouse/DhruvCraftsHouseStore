@@ -13,9 +13,9 @@ const nextConfig = {
         // !! WARN !!
         ignoreBuildErrors: true,
       },
-    // experimental: {
-    //     serverActions: true,
-    // }
+    experimental: {
+        serverActions: true,
+    }
 };
 
 

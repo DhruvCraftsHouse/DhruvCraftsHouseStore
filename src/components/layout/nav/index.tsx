@@ -10,6 +10,7 @@ import Hamburger from '@/components/common/components/hamburger'
 import { usePathname } from 'next/navigation'
 import SideMenu from '../side-menu'
 import CartDropdown from '../cart-dropdown'
+import AccountDropdown from '../account-dropdown'
 
 
 const Nav = () => {
@@ -100,9 +101,10 @@ const Nav = () => {
               <Link className="" href="/wishlist">
               Wishlist
             </Link>
-              <Link className="" href="/account">
+            <AccountDropdown />
+              {/* <Link className="" href="/account">
               Account
-            </Link>
+            </Link> */}
           </div>
           <CartDropdown />
         </div>
