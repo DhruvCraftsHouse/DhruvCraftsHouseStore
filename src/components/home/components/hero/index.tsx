@@ -68,8 +68,8 @@ const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
 
           {/* Conditionally render this heading based on screen width */}
           {screenWidth >= 1200 && screenHeight >= 700 && (
-            <Heading className="max-w-[32rem] mb-6 drop-shadow-md shadow-black hero-h2 pl-6" style={{ fontFamily: "Avenir Next LT W02 Regular", lineHeight: "1.2em" }}>
-              Our crafts bring you home divinity, tranquility, and happiness
+            <Heading className="max-w-[32rem] mb-6 drop-shadow-md shadow-black hero-h2 pl-6" style={{ fontFamily: "Avenir Next LT W02 Regular", lineHeight: "1.2em" }} >
+              Our crafts bring you home divinity, tranquility, and happiness.  <span className="store-link" onClick={navigateToStore}>Explore all products &#x2192;</span>
             </Heading>
           )}
 
@@ -95,11 +95,14 @@ const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
 
         </div>
         {/* Image Column (Right Half of Screen) */}
-        <div className="right-div" onClick={navigateToStore} onMouseEnter={() => setShowTooltip(true)} onMouseLeave={() => setShowTooltip(false)} onMouseMove={handleMouseMove}>
-  <img className="main-img" src="/ganesha_transparent.png" alt="Summer Styles" loading="lazy" />
+        <div className="right-div">
+          <div onClick={navigateToStore} onMouseEnter={() => setShowTooltip(true)} onMouseLeave={() => setShowTooltip(false)} onMouseMove={handleMouseMove}>
+          <img className="main-img" src="/ganesha_transparent.png" alt="Summer Styles" loading="lazy" />
   {showTooltip && (
-    <span className="tooltip" style={{ left: tooltipPosition.x, top: tooltipPosition.y }}>Explore all products</span>
+    <span className="tooltip" style={{ left: tooltipPosition.x, top: tooltipPosition.y }}>Click to explore all products</span>
   )}
+          </div>
+ 
 </div>
 
       </div>

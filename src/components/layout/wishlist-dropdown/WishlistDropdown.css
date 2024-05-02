@@ -36,7 +36,7 @@
     border: 1px solid black; /* If the border color is not black in the image, adjust this value */
     padding: 0; /* Remove padding to only rely on width and height for size */
     position: absolute;
-    right: -15px; /* Position to the right of the text */
+    right: -10px; /* Position to the right of the text */
     top: 50%; /* Center vertically relative to the parent */
     transform: translate(50%, -50%); /* Center the circle relative to its own size */
     font-size: 11px; /* Adjust to match the size in the image */

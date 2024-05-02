@@ -108,7 +108,7 @@ const Item = ({ item, region, type = "full" }: ItemProps) => {
   };
   
   
-   console.log('item.thumbnail', item.thumbnail)
+  //  console.log('item.thumbnail', item.thumbnail)
 //included returned display code with additional display of discounts and moveToWishlist button
    return (
     <Table.Row className="w-full">

@@ -8,6 +8,7 @@ import { faTelegram} from '@fortawesome/free-brands-svg-icons/faTelegram';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons/faChevronDown'; // Import chevron icons for the dropdown
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons/faChevronUp'; // Import chevron icons for the dropdown
+import { useCollections, useProductCategories } from "medusa-react"
 
 // import LoadingSpinner from '@modules/loader'; // Ensure this path matches where your LoadingSpinner component is located.
 import { usePathname } from 'next/navigation'
@@ -42,11 +43,25 @@ const LoadingSpinner = () => {
   );
 };
 
+interface Collection {
+  id: string;
+  title: string;
+  handle: string;
+
+  // Include other properties as per your Medusa setup
+}
+
 const FooterNav = () => {
   const pathname = usePathname();
   // console.log('pathname', pathname)
   const [isNavigating, setIsNavigating] = useState(false);
   const [clickedPath, setClickedPath] = useState('');
+  // const [collections, setCollections] = useState<Collection[]>([]);
+
+  const { collections } = useCollections()
+  const { product_categories} = useProductCategories();
+
+  console.log('product_categories', product_categories)
 
   // console.log('clickedPath', clickedPath)
   // Initialize clickedPath with the current pathname when the component mounts
@@ -91,7 +106,7 @@ const FooterNav = () => {
         
       <div className="main-footer flex gap-y-1 sm:gap-y-2 md:gap-y-4 xsmall:flex-row items-start justify-between py-10" style={{width:"88%", marginLeft:"3%",marginTop:"2%"}}>
           {/* Use gap-x-4 on larger screens if using flex-row, adjust py-10 for padding top and bottom */}
-<div className="flex flex-col gap-y-5" style={{ fontSize: "10.5px", fontWeight: 900,fontFamily:"Avenir Next LT W02 Regular",letterSpacing:"0.1em" }}>
+{/* <div className="flex flex-col gap-y-5" style={{ fontSize: "10.5px", fontWeight: 900,fontFamily:"Avenir Next LT W02 Regular",letterSpacing:"0.1em" }}>
 <ul className="list-none" style={{lineHeight:"2.5em",textTransform:"uppercase"}}>
 
             <ul><Link href="/" className="option-list"
@@ -114,13 +129,24 @@ const FooterNav = () => {
 >SPECIAL PROJECTS</Link></ul>
 
 </ul>
-            {/* Add more links or text here as needed */}
-          </div>
+          </div> */}
+          <div className="flex flex-col gap-y-5" style={{ fontSize: "10.5px", fontWeight: 900, fontFamily:"Avenir Next LT W02 Regular", letterSpacing:"0.1em" }}>
+  <ul className="list-none" style={{ lineHeight:"2.5em", textTransform:"uppercase" }}>
+    {collections && collections.map((collection) => (
+      <ul key={collection.id}>
+        <Link href={`/collections/${collection.handle}`} className="option-list"
+          onClick={() => handleLinkClick(`/collections/${collection.handle}`)}>
+          {collection.title}
+        </Link>
+      </ul>
+    ))}
+  </ul>
+</div>
+
           <div className="footer-nav-container-md flex gap-x-20">
-                  <div className="" style={{ fontSize: "10.5px", fontFamily:"Avenir Next LT W02 Regular",letterSpacing:"0.1em" }}>
+                  {/* <div className="" style={{ fontSize: "10.5px", fontFamily:"Avenir Next LT W02 Regular",letterSpacing:"0.1em" }}>
             <h3 className="txt-black" style={{fontWeight:"bold"}}>CATEGORIES</h3>
             <ul className="list-none mt-3" style={{lineHeight:"3em", textTransform:"uppercase", fontSize:"8px"}}>
-              {/* Replace with actual links or text */}
               <li><Link className="option-li" href="/">Rings</Link></li>
               <li><Link className="option-li" href="/">Earrings</Link></li>
               <li><Link className="option-li" href="/">Studs</Link></li>
@@ -132,7 +158,20 @@ const FooterNav = () => {
               <li><Link className="option-li" href="/">CHAINS</Link></li>
               <li><Link className="option-li" href="/">CUFFS</Link></li>
             </ul>
-          </div>
+          </div> */}
+          <div className="" style={{ fontSize: "10.5px", fontFamily:"Avenir Next LT W02 Regular",letterSpacing:"0.1em" }}>
+  <h3 className="txt-black" style={{fontWeight:"bold"}}>CATEGORIES</h3>
+  <ul className="list-none mt-3" style={{lineHeight:"3em", textTransform:"uppercase", fontSize:"8px"}}>
+    {product_categories && product_categories.map(category => (
+      <li key={category.id}>
+        <Link className="option-li" href={`/category/${category.handle}`} onClick={() => handleLinkClick(`/category/${category.handle}`)}>
+          {category.name}
+        </Link>
+      </li>
+    ))}
+  </ul>
+</div>
+
           <div className="" style={{fontSize: "10.5px", fontFamily:"Avenir Next LT W02 Regular",letterSpacing:"0.1em" }}>
             <h3 className="txt-black" style={{ fontWeight: "bold"}}>FOR CLIENTS</h3>
             <ul className="list-none mt-3" style={{lineHeight:"3em", textTransform:"uppercase", fontSize:"8px"}}>
@@ -170,7 +209,7 @@ const FooterNav = () => {
           {showCategories && (
             <ul className="dropdown-content list-none mt-3" style={{lineHeight:"3em", textTransform:"uppercase", fontSize:"8px"}}>
               {/* Replace with actual links or text */}
-              <li className="option-list">Rings</li>
+              {/* <li className="option-list">Rings</li>
               <li className="option-list">Earrings</li>
               <li className="option-list">Studs</li>
               <li className="option-list">Bracelets</li>
@@ -179,7 +218,12 @@ const FooterNav = () => {
               <li className="option-list">NECKLACE</li>
               <li className="option-list">MONO EARRINGS</li>
               <li className="option-list">CHAINS</li>
-              <li className="option-list">CUFFS</li>
+              <li className="option-list">CUFFS</li> */}
+               {product_categories && product_categories.map(category => (
+        <li className="option-list" key={category.id}>
+          {category.name}
+        </li>
+      ))}
             </ul>
           )}
           </div>

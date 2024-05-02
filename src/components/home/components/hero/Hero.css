@@ -140,7 +140,7 @@
 }
 .hero-h2 {
   padding-top: 2%;
-  font-size: 26px;
+  font-size: 23.5px;
 }
 .hero-p {
   font-size: 16px;
@@ -369,9 +369,29 @@
     transform: translate(-50%, -100%); /* Adjust the tooltip to appear above the cursor */
     background-color: black;
     color: white;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 4px 8px; /* Reduced padding for a smaller box */
+    border-radius: 0px;
     white-space: nowrap;
     z-index: 1000; /* Ensure it's above other content */
-  }
+    font-size: 12px; /* Reduced font size */
+    visibility: hidden; /* Initially hidden */
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for tooltip */
+}
+
+.right-div:hover .tooltip {
+    visibility: visible; /* Show tooltip on hover */
+    opacity: 1;
+}
+.store-link {
+  cursor: pointer;
+  font-weight: 600;
+  color: inherit; /* Optional: ensures the span uses the same text color as its surroundings */
+  text-decoration: none; /* Ensures no underline by default */
+}
+
+.store-link:hover {
+  text-decoration: underline; /* Adds an underline on hover */
+}
+
   

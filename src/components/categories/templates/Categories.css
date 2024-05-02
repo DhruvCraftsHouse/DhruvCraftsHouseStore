@@ -1,0 +1,45 @@
+/* Categories.css */
+
+.custom-image-size {
+    width: 76px;
+    height: 80px;
+    padding: 5%;
+    background: white;
+    box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.5); /* Adding a border shadow */
+  }
+.selected-image-size {
+  width: 76px;
+  height: 80px;
+  background: white;
+  border: 1px solid black; /* Added border styling */
+  padding: 5%;
+}
+.vertical-line {
+  height: 100px; /* Adjust height as needed */
+  width: 0.5px; /* Adjust width for line thickness */
+  background-color: gray;
+  margin-top: 10px; /* Space above the line */
+}
+
+
+.no-products-message {
+  text-align: center;
+  font-size: 2rem; /* Adjust font size as needed */
+  color: #333; /* Choose a suitable color */
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-weight: bold;
+  font-family: 'Klein, sans-serif';
+  /* Add more styling as desired */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.sidebar-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.sidebar-content {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

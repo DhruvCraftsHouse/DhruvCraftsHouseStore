@@ -23,7 +23,7 @@ const CartDropdown = () => {
   };
   
   
-  console.log('items cart', items)
+  // console.log('items cart', items)
   return (
     <div className="h-full z-50" onMouseEnter={open} onMouseLeave={close}>
       <Popover className="relative h-full">

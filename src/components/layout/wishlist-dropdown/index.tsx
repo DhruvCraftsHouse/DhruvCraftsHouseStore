@@ -199,11 +199,15 @@ const WishlistDropdown: React.FC<WishlistDropdownProps> = ({ isSideMenuOpen }) =
 
   // Function to handle link clicks
 const handleLinkClick = (targetPath: string) => {
-  console.log("Link clicked with path:", targetPath);
+  // console.log("Link clicked with path:", targetPath);
   setClickedPath(targetPath); // Update clickedPath to the target path
   setIsNavigating(true); // Assume navigation is starting
 };
  
+const transformThumbnailUrl = (url: string | null): string => {
+  if (!url) return '/default-thumbnail.jpg'; // Return a default image URL if no URL is provided
+  return url.replace("http://localhost:9000/uploads", "https://dhruvcraftshouse.com/backend/uploads");
+};
 
   // Render the WishlistDropdown component
   return (
@@ -277,7 +281,7 @@ const handleLinkClick = (targetPath: string) => {
               <div key={item.id} className="wishlist-item">
                 {/* Thumbnail of the product */}
                 {item.thumbnail && (
-                  <img src={item.thumbnail} alt={item.title} className="thumbnail" />
+                  <img src={transformThumbnailUrl(item.thumbnail)} alt={item.title} className="thumbnail" />
                 )}
                 {/* Product title */}
                 <p className="title">{item.title}</p>
