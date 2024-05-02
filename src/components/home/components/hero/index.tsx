@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, MouseEvent } from "react";
 import { Heading } from "@medusajs/ui";
+import { useRouter } from "next/navigation";
 import './Hero.css';
 
 const features = [
@@ -21,6 +22,17 @@ const Hero = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [screenWidth, setScreenWidth] = useState<number>(0); // State to store screen width
   const [screenHeight, setScreenHeight] = useState<number>(0); // State to store screen height
+  const router = useRouter(); // Instantiate the router object
+
+  const [showTooltip, setShowTooltip] = useState(false);
+const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+
+const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+  setTooltipPosition({
+    x: event.clientX,
+    y: event.clientY
+  });
+};
 
 
   useEffect(() => {
@@ -41,6 +53,10 @@ const Hero = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []); // Empty dependency array ensures this runs only once after the initial render
+
+  const navigateToStore = () => {
+    router.push('/store'); // Use router to navigate on click
+  };
 
   return (
     <div className="h-auto border-b border-ui-border-base relative flex flex-col " style={{ fontFamily: "Avenir Next LT W02 Regular", background: "#F5F6FA", maxWidth: "100%" }}>
@@ -79,9 +95,13 @@ const Hero = () => {
 
         </div>
         {/* Image Column (Right Half of Screen) */}
-        <div className="right-div">
-          <img className="main-img" src="/ganesha_transparent.png" alt="Summer Styles" loading="lazy" />
-        </div>
+        <div className="right-div" onClick={navigateToStore} onMouseEnter={() => setShowTooltip(true)} onMouseLeave={() => setShowTooltip(false)} onMouseMove={handleMouseMove}>
+  <img className="main-img" src="/ganesha_transparent.png" alt="Summer Styles" loading="lazy" />
+  {showTooltip && (
+    <span className="tooltip" style={{ left: tooltipPosition.x, top: tooltipPosition.y }}>Explore all products</span>
+  )}
+</div>
+
       </div>
     </div>
   );

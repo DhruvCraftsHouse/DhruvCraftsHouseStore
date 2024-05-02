@@ -1,4 +1,4 @@
-// Import necessary hooks, components, and libraries
+// Import necessary hooks, components, and /libraries
 import React, { useState, useEffect, Fragment } from 'react';
 import { Popover, Transition } from "@headlessui/react"
 import { useStore } from "@/lib/context/store-context"

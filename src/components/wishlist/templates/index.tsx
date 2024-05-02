@@ -28,8 +28,8 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { useWishlistDropdownContext } from "@/lib/context/wishlist-dropdown-context"
 import { getDiscountList } from "./productDiscount"
-import './Wishlist.css';
 import { MEDUSA_BACKEND_URL } from "@/lib/config";
+import './Wishlist.css';
 
 // Defining types for wishlist items and favorite items
 interface FavoriteItem {
@@ -154,7 +154,6 @@ useEffect(() => {
       const data = await handleData();
       if (data.wishlist && Array.isArray(data.wishlist)) {
         data.wishlist.forEach((item: FavoriteItem) => {
-          console.log('item wishlist', item)
           medusa.products.variants.retrieve(item.variant_id)
             .then(({ variant }) => {
               if (isCancelled) return;
@@ -171,7 +170,6 @@ useEffect(() => {
                   handle: variant.product?.handle
                 }];
               });
-              console.log('wishlistItems', wishlistItems)
               // setWishitems(wishlistItems)
             })
         });
@@ -268,12 +266,7 @@ useEffect(() => {
     }
   };
   
-console.log('listItems', listItems)
 
-const transformThumbnailUrl = (url: string | null): string => {
-  if (!url) return '/default-thumbnail.jpg'; // Return a default image URL if no URL is provided
-  return url.replace("http://localhost:9000/uploads", "https://dhruvcraftshouse.com/backend/uploads");
-};
   // Call the fetchDiscounts function when the component mounts or when wishlistItems change
   useEffect(() => {
     if (listItems.length > 0) {
@@ -292,7 +285,7 @@ const transformThumbnailUrl = (url: string | null): string => {
       {/* Wishlist page layout and logic */}
 
       {/* Conditional rendering based on wishlist items */}
-      {wishlistItems.length > 0 ? (
+      {listItems.length > 0 ? (
         <div style={{ background: "white", width: "90%", padding: "", marginTop: "6%", marginBottom: "10%" }}>
           <div className="flex flex-col bg-white p-6 gap-y-6" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
             {!customer?.id && <SignInPrompt />}
@@ -363,11 +356,11 @@ const transformThumbnailUrl = (url: string | null): string => {
                   </tr>
                 </thead>
                 <tbody>
-                  {wishlistItems.map((item, index) => (
+                  {listItems.map((item, index) => (
                     <tr key={index} style={{ marginTop: "10%", paddingTop: "10%", paddingBottom: "10%" }}>
                       <Link href={`/products/${item.handle}`}>
                         <td style={{ paddingTop: "3%", paddingBottom: "3%" }}>
-                          <img src={transformThumbnailUrl(item.thumbnail || "")} alt={item.title} />
+                          <img src={item.thumbnail || ""} alt={item.title} />
                         </td>
                       </Link>
                       <td style={{ paddingLeft: "4%", background: "", width: "60%", verticalAlign: "middle", }}>

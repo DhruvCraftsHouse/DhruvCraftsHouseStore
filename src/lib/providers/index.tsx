@@ -5,6 +5,7 @@ import { AccountProvider } from "@/lib/context/account-context"
 import { CartDropdownProvider } from "@/lib/context/cart-dropdown-context"
 import { MobileMenuProvider } from "@/lib/context/mobile-menu-context"
 import { StoreProvider } from "@/lib/context/store-context"
+import { WishlistDropdownContextProvider } from "../context/wishlist-dropdown-context"
 import { MedusaProvider, CartProvider } from "medusa-react"
 
 export default function Providers({ children }: { children: React.ReactNode }) {
@@ -16,6 +17,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       }}
     >
       <CartDropdownProvider>
+      <WishlistDropdownContextProvider>
         <MobileMenuProvider>
           <CartProvider>
             <StoreProvider>
@@ -25,6 +27,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
             </StoreProvider>
           </CartProvider>
         </MobileMenuProvider>
+        </WishlistDropdownContextProvider>
       </CartDropdownProvider>
     </MedusaProvider>
   )

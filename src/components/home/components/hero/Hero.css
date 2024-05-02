@@ -16,7 +16,8 @@
 
 @media (min-width: 760px) {
   .right-div{
-      flex: 1;
+    cursor: pointer;
+    flex: 1;
       display: flex;
       align-items:center;
   }
@@ -200,6 +201,7 @@
 
 @media (max-width: 768px) {
   .right-div {
+    cursor: pointer;
       display: none;
   }
   .left-hero-div{
@@ -235,6 +237,7 @@
       font-size: 16px;
   }
   .right-div {
+    cursor: pointer;
       display: none;
   }
   .hero-features {
@@ -360,3 +363,15 @@
       padding-left: 5%;
       }
   } 
+
+  .tooltip {
+    position: fixed; /* Use fixed to position according to the viewport */
+    transform: translate(-50%, -100%); /* Adjust the tooltip to appear above the cursor */
+    background-color: black;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 1000; /* Ensure it's above other content */
+  }
+  
