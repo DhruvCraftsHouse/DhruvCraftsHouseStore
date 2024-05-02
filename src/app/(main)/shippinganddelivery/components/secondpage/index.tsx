@@ -21,7 +21,7 @@ const SecondPage = () => {
         </div>
         <div className="mt-6 shipping-div" style={{fontFamily:"AvenirNextCyr-Regular",textAlign:"left",fontWeight:500}}>
             <p className="mt-5">
-            Upon order confirmation, you will receive tracking details via email, enabling you to monitor the progress of your delivery in real-time.
+            Upon order confirmation, you will receive tracking details via email, enabling you to monitor the progress of your delivery in real-time. The product will be shipped within 2-3 days.
             </p>
 <div className="mt-3" style={{borderBottom:"1px solid rgba(0,0,0,0.4)"}}></div>
 <p className="mt-5">

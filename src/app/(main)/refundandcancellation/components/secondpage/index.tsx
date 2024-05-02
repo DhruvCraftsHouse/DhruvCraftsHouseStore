@@ -26,7 +26,7 @@ const SecondPage = () => {
         </div>
         <div className="mt-6 refund-div" style={{fontFamily:"AvenirNextCyr-Regular",textAlign:"left",fontWeight:500}}>
             <p className="mt-5">
-            Contact us immediately for a replacement or refund if you receive a damaged or defective item.
+            Contact us immediately for a replacement or refund if you receive a damaged or defective item. If the item is not damaged then no returns are entertained
             </p>
 {/* <div className="mt-3" style={{borderBottom:"1px solid rgba(0,0,0,0.4)"}}></div> */}
 <p className="mt-5">
