@@ -81,12 +81,12 @@ const FooterNav = () => {
   
     // Check if the target path without hash is the same as the current pathname
     if (pathWithoutHash === pathname) {
-      // console.log("Already on the same page:", pathWithoutHash);
+      console.log("Already on the same page:", pathWithoutHash);
       // Do not proceed with navigation
       return;
     }
   
-    // console.log("Link clicked with path:", pathWithoutHash);
+    console.log("Link clicked with path:", pathWithoutHash);
     setClickedPath(pathWithoutHash); // Update clickedPath to the target path without the hash
     setIsNavigating(true); // Assume navigation is starting
   };

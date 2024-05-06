@@ -627,7 +627,7 @@ const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categories }) => {
     // Set a timeout for 30 seconds
     const timeoutId = setTimeout(() => {
       setShowLoadingMessage(false);
-    }, 20000);
+    }, 2000);
 
     return () => {
       // Clear the timeout if the component unmounts
