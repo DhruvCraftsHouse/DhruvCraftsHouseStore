@@ -57,6 +57,10 @@ export const ProductWithPrice: React.FC<ProductWithPriceProps> = ({ productId })
       return variantPrice || cheapestPrice || null;
     }, [price]);
 
+    const transformThumbnailUrl = (url: string | null): string => {
+      if (!url) return '/default-thumbnail.jpg'; // Return a default image URL if no URL is provided
+      return url.replace("http://localhost:9000/uploads", "https://dhruvcraftshouse.com/backend/uploads");
+    };
     // console.log('productDetails', productDetails)
 
     return (
@@ -64,7 +68,7 @@ export const ProductWithPrice: React.FC<ProductWithPriceProps> = ({ productId })
         {productDetails && (
           <Link href={`/products/${productDetails.handle}`} className="group">
             <div style={{ fontFamily: "Klein,sans-serif" }}>
-              <Thumbnail thumbnail={productDetails.thumbnail} size="full" />
+              <Thumbnail thumbnail={transformThumbnailUrl(productDetails.thumbnail)} size="full" />
               <div className="flex flex-col mt-4 justify-between">
                 <div>
                   <Text className="truncate" style={{ fontWeight: 600, color: "black", fontSize: "15px", textTransform: "uppercase", fontFamily: "Klein, sans-serif" }}>

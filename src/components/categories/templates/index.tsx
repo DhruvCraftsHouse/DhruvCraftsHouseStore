@@ -342,13 +342,18 @@ const CategoryTemplate: React.FC<CategoryTemplateProps> = ({ categories }) => {
       if (product.variants && product.variants.length > 0 && product.variants[0].prices && product.variants[0].prices.length > 0) {
         priceProduct = product.variants[0].prices[0].amount;
       }
+
+      const transformThumbnailUrl = (url: string | null): string => {
+        if (!url) return '/default-thumbnail.jpg'; // Return a default image URL if no URL is provided
+        return url.replace("http://localhost:9000/uploads", "https://dhruvcraftshouse.com/backend/uploads");
+      };
       // console.log('priceProduct', priceProduct)
 
       return {
         id: product.id,
         title: product.title,
         handle: product.handle,
-        thumbnail: product.thumbnail,
+        thumbnail: transformThumbnailUrl(product.thumbnail),
         variants: product.variants,
         created_at: product.created_at,
         updated_at: product.updated_at,

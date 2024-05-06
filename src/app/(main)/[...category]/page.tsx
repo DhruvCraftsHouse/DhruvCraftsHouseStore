@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const category = product_categories[0]
 
+  // console.log('category', category)
   if (!category) {
     notFound()
   }

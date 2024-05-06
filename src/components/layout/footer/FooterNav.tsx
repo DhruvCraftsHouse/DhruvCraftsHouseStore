@@ -164,7 +164,7 @@ const FooterNav = () => {
   <ul className="list-none mt-3" style={{lineHeight:"3em", textTransform:"uppercase", fontSize:"8px"}}>
     {product_categories && product_categories.map(category => (
       <li key={category.id}>
-        <Link className="option-li" href={`/category/${category.handle}`} onClick={() => handleLinkClick(`/category/${category.handle}`)}>
+        <Link className="option-li" href={`/${category.handle}`} onClick={() => handleLinkClick(`/${category.handle}`)}>
           {category.name}
         </Link>
       </li>
