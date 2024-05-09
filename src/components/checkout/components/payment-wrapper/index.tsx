@@ -27,6 +27,8 @@ const StripeWrapper: React.FC<WrapperProps> = ({
   paymentSession,
   children,
 }) => {
+
+  console.log('paymentSession', paymentSession)
   const options: StripeElementsOptions = {
     clientSecret: paymentSession!.data?.client_secret as string | undefined,
   }

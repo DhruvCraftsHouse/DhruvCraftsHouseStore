@@ -46,7 +46,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
   //additional state initialization to reflect the changes immediately with changes made in admin panel
   const [retrievedProduct, setRetrievedProduct] = useState<PricedProduct | null>(null);
 
-  // console.log('product temp;ate', product)
+  console.log('product template', product)
   const productId: string = product.id!;
 
   useEffect(() => {

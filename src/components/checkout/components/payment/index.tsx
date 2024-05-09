@@ -13,6 +13,8 @@ import Ideal from "@/components/common/icons/ideal"
 import Bancontact from "@/components/common/icons/bancontact"
 // import { useElements } from "@stripe/react-stripe-js"
 import { useState } from "react"
+import Razor from "./razor"
+import PaymentButton from "../payment-button"
 
 /* Map of payment provider_id to their title and icon. Add in any payment providers you want to use. */
 export const paymentInfoMap: Record<
@@ -119,6 +121,7 @@ const Payment = () => {
       )
     }
   }
+  console.log('cart checkout-payment', cart)
 
   return (
     <div className="bg-white px-4 small:px-8">
@@ -144,7 +147,12 @@ const Payment = () => {
           </Text>
         )}
       </div>
-      <div>
+      <div >
+                {cart && <Razor  />} 
+                {/* <PaymentButton paymentSession={cart?.payment_session} /> */}
+
+      </div>
+      {/* <div>
         {cart?.payment_sessions?.length ? (
           <div className={!editingOtherSteps && isOpen ? "block" : "hidden"}>
             <RadioGroup
@@ -248,7 +256,7 @@ const Payment = () => {
             </div>
           )}
         </div>
-      </div>
+      </div> */}
       <Divider className="mt-8" />
     </div>
   )

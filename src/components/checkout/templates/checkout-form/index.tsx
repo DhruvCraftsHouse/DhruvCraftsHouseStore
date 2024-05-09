@@ -28,9 +28,9 @@ const CheckoutForm = () => {
           <Payment />
         </div>
 
-        <div>
+        {/* <div>
           <Review />
-        </div>
+        </div> */}
       </div>
     </div>
   )
