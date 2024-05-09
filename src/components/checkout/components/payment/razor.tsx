@@ -4,6 +4,7 @@ import { useCheckout } from "@/lib/context/checkout-context";
 import { PaymentSession } from "@medusajs/medusa";
 import { useCart } from "medusa-react";
 import axios from 'axios'; // Make sure Axios is imported
+import { MEDUSA_BACKEND_URL } from '@/lib/config';
 
 type PaymentButtonProps = {
   paymentSession?: PaymentSession | null;
@@ -45,7 +46,7 @@ const PhonePeButton = ({ notReady }: { notReady: boolean }) => {
 
     try {
     //   setSubmitting(true);
-      const response = await axios.post('http://localhost:9000/store/payment', data);
+      const response = await axios.post(`${MEDUSA_BACKEND_URL}/store/payment`, data);
       console.log('response phonepe', response)
       const redirectUrl = response.data.data.instrumentResponse.redirectInfo.url;
       console.log('Redirect URL:', redirectUrl);

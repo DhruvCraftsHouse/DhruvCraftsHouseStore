@@ -4,13 +4,14 @@ import { InformationCircleSolid } from "@medusajs/icons"
 import { formatAmount } from "medusa-react"
 import React from "react"
 import Medusa from "@medusajs/medusa-js";
+import { MEDUSA_BACKEND_URL } from "@/lib/config"
 
 
 type CartTotalsProps = {
   data: Omit<Cart, "refundable_amount" | "refunded_total"> | Order
 }
 const medusa = new Medusa({
-  baseUrl: "http://localhost:9000",
+  baseUrl: MEDUSA_BACKEND_URL,
   maxRetries: 3,
  });
 const CartTotals: React.FC<CartTotalsProps> = ({ data }) => {

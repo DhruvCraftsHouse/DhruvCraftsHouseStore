@@ -60,7 +60,7 @@ const discountInfo = filteredDiscounts.map((discount) => {
 // Call the productDiscount API for each discountInfo
 for (const info of discountInfo) {
     const { discount_id, condition_id, code, ends_at, value, type } = info;
-    const apiURL = `http://localhost:9000/store/productDiscount?discount_id=${discount_id}&conditionId=${condition_id}`;
+    const apiURL = `${MEDUSA_BACKEND_URL}/store/productDiscount?discount_id=${discount_id}&conditionId=${condition_id}`;
   
     // Making GET request to the productDiscount API
     const productDiscountResponse = await axios.get(apiURL);
