@@ -91,7 +91,7 @@ const PhonePeButton = ({ notReady }: { notReady: boolean }) => {
         setTransactionId(merchantTransactionId);
         console.log(`Response from PhonePe from : ${MEDUSA_BACKEND_URL}/store/payment`, response);
         console.log('response.data.data.instrumentResponse.redirectInfo.url', response.data.data.instrumentResponse.redirectInfo.url)
-        window.open(response.data.data.instrumentResponse.redirectInfo.url, '_blank');
+        // window.open(response.data.data.instrumentResponse.redirectInfo.url, '_blank');
 
         setButtonText('Processing Payment...');
 

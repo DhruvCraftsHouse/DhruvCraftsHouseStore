@@ -3,6 +3,7 @@ import { Order } from "@medusajs/medusa";
 import { Heading, Text } from "@medusajs/ui";
 import React, { useEffect } from 'react';
 import { sendEmail } from "./sendEmail";
+import { payOrder } from "./payOrder"
 
 // Define the props type for the OrderDetails component
 type OrderDetailsProps = {
@@ -12,11 +13,16 @@ type OrderDetailsProps = {
 
 // Define the OrderDetails component
 const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
+
   // Calculate the total number of items in the order
   const items = order.items.reduce((acc, i) => acc + i.quantity, 0);
 
+  console.log('order OrderDetails', order)
+  
+    payOrder(order.id);
   // Effect to send an email whenever the component mounts
-  useEffect(() => {
+  useEffect(() => {   
+
     sendEmail(order);
   }, []);
 
