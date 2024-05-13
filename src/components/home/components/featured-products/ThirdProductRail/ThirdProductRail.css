@@ -38,7 +38,7 @@
   
  
   .container-grow-animation {
-    animation: revealContent 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    /* animation: revealContent 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards; */
   }
   
   @keyframes revealContent {
@@ -71,7 +71,7 @@
   }
   
   .imageReveal {
-    animation: revealFromTop 1.5s forwards;
+    /* animation: revealFromTop 1.5s forwards; */
   }
   .product-label {
     font-size: 24px; /* Adjust the font size as needed */

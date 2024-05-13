@@ -308,7 +308,7 @@ const SubtitleContainer = styled.div`
 `;
    return (
     <div className="collection-list-main" ref={imgRef} style={itemStyle}>
-      <div className={`image-container ${isVisible ? 'image-reveal-animation' : 'hidden'}`} style={{ height: imageHeight, width: 'auto', marginRight: '5px', background: "#e3e4e6", position:"relative" }}>
+      <div className={`image-container ${isVisible ? '' : 'hidden'}`} style={{ height: imageHeight, width: 'auto', marginRight: '5px', background: "#e3e4e6", position:"relative" }}>
         <img src={thumbnail} alt={title} style={{ height: imageHeight, width: '100%' }} />
       </div>
       <div style={{ marginTop:"-35%",marginLeft: "-8%", width: "15%", borderTop:"1px solid #B1BDC2", zIndex: 1 }}></div>

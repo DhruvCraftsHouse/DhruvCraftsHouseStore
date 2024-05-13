@@ -50,8 +50,8 @@ const Column = styled.div<ColumnProps>`
   flex-direction: column;
   align-items: center;
   flex: ${props => props.flexSize || 1};
-  clip-path: ${props => props.isVisible ? 'inset(0 0 0 0)' : 'inset(0 0 100% 0)'}; // Applying animation effect directly via clip-path
-  transition: clip-path 1s ease-out; // Transition for the animation
+  // clip-path: ${props => props.isVisible ? 'inset(0 0 0 0)' : 'inset(0 0 100% 0)'}; // Applying animation effect directly via clip-path
+  // transition: clip-path 1s ease-out; // Transition for the animation
   height: 100%;
 `;
 
@@ -82,7 +82,7 @@ const StyledImage = styled.img`
   max-width: 100%;   // Prevent the image from overflowing the column width
   height: 100%; // Set to fill the parent height, adjusting as the container changes
 //   object-fit: contain; // Ensures the image is scaled to be as large as possible without cropping or stretching
-animation: ${revealFromTop} 1s ease-out forwards;
+// animation: ${revealFromTop} 1s ease-out forwards;
 
 `;
 
