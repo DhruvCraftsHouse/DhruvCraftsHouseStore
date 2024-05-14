@@ -49,14 +49,14 @@ const InfiniteProducts = ({ params, sortBy }: InfiniteProductsType) => {
       }
     )
 
-    // console.log("data ",data)
+    console.log("data ",data)
   const previews = usePreviews({
     pages: data?.pages,
     region: cart?.region,
     sortBy,
   })
 
-  // console.log("preview ",previews)
+  console.log("preview ",previews)
 
   useEffect(() => {
     if (inView && hasNextPage) {

@@ -64,6 +64,8 @@ for (const info of discountInfo) {
   
     // Making GET request to the productDiscount API
     const productDiscountResponse = await axios.get(apiURL);
+
+    console.log('productDiscountResponse api', productDiscountResponse)
   
     // Logging the response data
     // console.log(`Response for discount_id=${discount_id}, condition_id=${condition_id}:`, productDiscountResponse.data.products);

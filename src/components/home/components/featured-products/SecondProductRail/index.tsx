@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled, { keyframes, css } from 'styled-components';
+import { useRouter } from 'next/navigation';
 
 // Define animations using styled-components
 const fadeInScale = keyframes`
@@ -71,6 +72,7 @@ interface InfoContainerProps {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    cursor: pointer;
     animation: ${({ animate }) => animate ? css`${revealFromTop} 600ms ease-out forwards` : 'none'};
   `;
   
@@ -219,6 +221,7 @@ type Product = {
     id: string;
     title: string;
     subtitle: string;
+    handle: string;
     thumbnail: string;
     description: string;
     collection_name: string;
@@ -380,6 +383,14 @@ interface SecondProductRailProps {
   
     const firstProduct = product;
   
+    console.log('product secondproductrail', product)
+
+    const router = useRouter();
+
+    const handleClick = () => {
+      // Navigate to the product.handle page
+      router.push(`/products/${product.handle}`);
+    };
 // console.log('isNarrowScreen', isNarrowScreen)
 // console.log('isVisible', isVisible)
 
@@ -387,7 +398,8 @@ interface SecondProductRailProps {
         return (
         <ResponsiveContainer >
         <ResponsiveColumn>
-          <div ref={h1Ref} style={{display: "flex", flexDirection: 'column', alignItems: 'center'}}>
+          <div ref={h1Ref} onClick={handleClick}
+          style={{display: "flex", flexDirection: 'column', alignItems: 'center', cursor:"pointer"}}>
               <CenteredTitle isVisible={isTitleVisible}>{firstProduct.title}</CenteredTitle>
              {/* {isImageVisible && (  */}
               <ProductImage src={firstProduct.thumbnail} alt={firstProduct.title} />
@@ -398,7 +410,7 @@ interface SecondProductRailProps {
           </div>
         </ResponsiveColumn>
         <ResponsiveColumn>
-        <InfoContainer ref={infoRef} animate={isInfoVisible}>
+        <InfoContainer onClick={handleClick} ref={infoRef} animate={isInfoVisible}>
           {/* {isInfoVisible && ( */}
             <>             {/* {isSubtitleVisible && (  */}
               <CenteredSubtitle>{firstProduct.subtitle}</CenteredSubtitle>
@@ -415,7 +427,7 @@ interface SecondProductRailProps {
     return (
         <Container style={{ paddingTop: "5%", height: containerHeight, paddingBottom: "8%",  }}>
         <EndAlignedColumn>
-<div ref={h1Ref} style={{display: "flex", height: "auto"}}>
+<div ref={h1Ref} onClick={handleClick} style={{display: "flex", height: "auto", cursor:"pointer"}}>
           <div style={{display: "flex", justifyContent: "flex-end"}}>
             {/* Image container */}
             {isImageVisible && (
@@ -429,7 +441,7 @@ interface SecondProductRailProps {
         </div>
         </EndAlignedColumn>
         <StartAlignedColumn>
-        <InfoContainer ref={infoRef} animate={isInfoVisible}>
+        <InfoContainer onClick={handleClick} ref={infoRef} animate={isInfoVisible}>
           {isInfoVisible && (
             <>
               <Subtitle>{firstProduct.subtitle}</Subtitle>

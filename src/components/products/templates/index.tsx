@@ -103,7 +103,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
 
         {/* <RelatedProducts product={retrievedProduct || product} /> */}
       </div>
-      <div ref={reviewsRef} className="content-container my-16 px-6 small:px-8 small:my-32">
+      <div ref={reviewsRef} className="content-container my-16 px-6 small:px-8 small:my-32" style={{ paddingTop:"6%"}}>
       <Suspense fallback={<div>Loading...</div>}>
   {/* <RelatedProducts product={retrievedProduct || product} /> */}
   <ReviewsRatings product={retrievedProduct || product} />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useRouter } from "next/navigation"
+import Image from 'next/image'; // Import the Image component
 
 
 // Define animations using styled-components
@@ -129,6 +130,7 @@ const SubtitleEndAligned = styled.h3`
   bottom: 120px;
   max-width: 120px;
   z-index: 2;
+  cursor: pointer;
   word-wrap: break-word;
   line-height: 1.4;
   animation: ${fadeInScale} 100ms ease-out forwards;
@@ -303,6 +305,7 @@ const Subtitle = styled.h3`
   position: absolute;
   top: 120px; // Increase this value to increase the gap between the title and subtitle
   left: 130px;
+  cursor: pointer;
   max-width: 120px; // Adjust the width as needed for your design
   z-index: 2; // Higher than the image to ensure it's on top
   word-wrap: break-word; // Ensures text breaks into new lines if too long
@@ -463,11 +466,12 @@ const FirstProductRail: React.FC<FirstCollectionProps> = ({ products }) => {
             <ProductImage
   src={secondProduct.thumbnail}
   alt={secondProduct.title}
+  style={{cursor:"pointer"}}
   isFirstProduct={false} // Pass the isFirstProduct prop with the appropriate value
   onClick={() => handleClick(secondProduct.handle)} // Adding click handler
   />
           )}
-          {isSecondTitleVisible && <TitleEndAligned style={{ animationDelay: '' }} >{secondProduct.title}</TitleEndAligned>}
+          {isSecondTitleVisible && <TitleEndAligned style={{ animationDelay: '', cursor:"pointer" }} >{secondProduct.title}</TitleEndAligned>}
           {isSecondSubtitleVisible && secondProduct.collection_name && (
             <SubtitleEndAligned>{secondProduct.collection_name}</SubtitleEndAligned>
           )}  
@@ -478,12 +482,12 @@ const FirstProductRail: React.FC<FirstCollectionProps> = ({ products }) => {
   src={firstProduct.thumbnail}
   alt={firstProduct.title}
   isFirstProduct={true} // Pass the isFirstProduct prop with the appropriate value
-  style={{ animationDelay: '0s' }}
+  style={{ animationDelay: '0s', cursor:"pointer" }}
   onClick={() => handleClick(firstProduct.handle)} // Adding click handler
 
 />
           )}
-          {isFirstTitleVisible && <Title style={{ animationDelay: '' }} >{firstProduct.title}</Title>}
+          {isFirstTitleVisible && <Title style={{ animationDelay: '', cursor:"pointer" }} >{firstProduct.title}</Title>}
           {isFirstSubtitleVisible && firstProduct.collection_name && firstProduct.collection_name!='' && (
             <Subtitle>{firstProduct.collection_name}</Subtitle>
           )}

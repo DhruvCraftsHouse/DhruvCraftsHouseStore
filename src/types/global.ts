@@ -61,6 +61,11 @@ export type ProductPreviewType = {
     price_type: "default" | "sale"
   }
   isFeatured?: boolean
+  buy_get_num?: number
+  buy_get_offer?: number
+  sales_quantity?: number
+  discountCode?: string
+  video?: string
 }
 
 export type InfiniteProductPage = {

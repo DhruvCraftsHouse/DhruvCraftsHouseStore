@@ -91,9 +91,9 @@ const CollectionList: React.FC<SecondCollectionProps> = ({ products }) => {
   };
   function calculateDelay(index: number): number {
     switch (index) {
-      case 1: return 1000;
-      case 2: return 2000;
-      case 3: return 1000;
+      case 1: return 0;
+      case 2: return 0;
+      case 3: return 0;
       default: return 0;
     }
   }

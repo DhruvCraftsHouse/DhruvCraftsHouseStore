@@ -22,7 +22,6 @@ type ProductDetailsType = {
     buy_get_num: number;
     buy_get_offer: number;
     sales_quantity: number;
-    // ... add other details you need
   };
 
 export const ProductWithPrice: React.FC<ProductWithPriceProps> = ({ productId }) => {

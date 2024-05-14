@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled, { keyframes, css } from 'styled-components';
+import { useRouter } from 'next/navigation';
 // import ImageCarousel from '../image-preview-carousel';
 import ImageCarousel from '../ImageCarousel';
 
@@ -43,6 +44,7 @@ const Column = styled.div`
 const EndAlignedColumn = styled(Column)`
   justify-content: flex-end;
   position: relative;
+  cursor: pointer;
   width: 100%; // Default width to full width
   @media (max-width: 768px) { // Assuming 'md' is 768px
     width: 65vw; // 65% width on smaller screens
@@ -56,6 +58,7 @@ const StartAlignedColumn = styled(Column)`
   justify-content: center;
   align-items: center;
   position: relative;
+  cursor: pointer;
   height: 60vh; // Default height when screen height is below 900px
   width: 100%; // Default width to full width
 
@@ -131,6 +134,7 @@ type Product = {
     id: string;
     title: string;
     subtitle: string;
+    handle: string;
     thumbnail: string;
     description: string;
     collection_name: string;
@@ -203,14 +207,21 @@ interface ThirdProductRailProps {
     }, []);
 
     const firstProduct = product;
+
+    const router = useRouter();
+
+    const handleClick = () => {
+      // Navigate to the product.handle page
+      router.push(`/products/${product.handle}`);
+    };
   
     return (
         <Container style={{ paddingTop: "",paddingBottom: "7%"}}>
             {/* <h1>THIRD PAGE</h1> */}
 
-        <StartAlignedColumn ref={h1Ref}>
+        <StartAlignedColumn ref={h1Ref} onClick={handleClick}>
           {isTitleVisible && (
-            <Title style={{ animationDelay: '' }}>{firstProduct.title}</Title>
+            <Title style={{ animationDelay: '', cursor: "pointer" }}>{firstProduct.title}</Title>
           )}
           {/* {isCollectionVisible && ( */}
           <Subtitle visible={isCollectionVisible}>
@@ -218,7 +229,7 @@ interface ThirdProductRailProps {
             </Subtitle>
             {/* )} */}
         </StartAlignedColumn>
-        <EndAlignedColumn >
+        <EndAlignedColumn onClick={handleClick}>
           {isImageVisible && firstProduct.images && firstProduct.images.length > 0 && (
             <ImageCarousel images={firstProduct.images} />
             // <ImageCarousel />

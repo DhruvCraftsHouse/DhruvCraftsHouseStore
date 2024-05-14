@@ -388,7 +388,7 @@ return (
       <div className="flex items-center -mt-2">
      
       <StarRating rating={productRating}  onStarClick={onReviewsClick} />
-    <p  onClick={onReviewsClick} className="ml-4" style={{fontWeight: 500, color:"#000", textDecoration:"underline"}}>
+    <p  onClick={onReviewsClick} className="ml-4" style={{fontWeight: 500, color:"#000", textDecoration:"underline", cursor:"pointer"}}>
       Reviews
     </p>
     </div>

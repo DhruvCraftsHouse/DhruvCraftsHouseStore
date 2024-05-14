@@ -1,20 +1,24 @@
 import React, { useState, useEffect, MouseEvent } from "react";
 import { Heading } from "@medusajs/ui";
 import { useRouter } from "next/navigation";
+import Image from 'next/image'; // Import the Image component
 import './Hero.css';
 
 const features = [
   {
     imageSrc: "/transparent_bullockcart.png",
-    description: "Brass Statue",
+    description: "Sculptures Collections",
+    link: "/collections/sculptures", // Add link for Sculptures feature
   },
   {
     imageSrc: "/transpareny_horsetoy.png",
-    description: "Handcrafted Dolls",
+    description: "Handcrafted Collections",
+    link: "/collections/handcrafted/", // Add link for Handcrafted feature
   },
   {
-    imageSrc: "/transparent_krishnawatch.png",
+    imageSrc: "",
     description: "Handcrafted Accessories",
+    link: "/store", // No link for Handcrafted Accessories
   },
 ];
 
@@ -25,15 +29,14 @@ const Hero = () => {
   const router = useRouter(); // Instantiate the router object
 
   const [showTooltip, setShowTooltip] = useState(false);
-const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
-const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
-  setTooltipPosition({
-    x: event.clientX,
-    y: event.clientY
-  });
-};
-
+  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+    setTooltipPosition({
+      x: event.clientX,
+      y: event.clientY
+    });
+  };
 
   useEffect(() => {
     // Function to update screen width
@@ -82,11 +85,22 @@ const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
       onMouseLeave={() => setHoveredIndex(null)}
       style={{ position: 'relative', transition: 'transform 0.3s ease' }}
     >
-      <div className="w-full" style={{ transform: hoveredIndex === index ? 'translateY(-10%)' : 'translateY(0)', display: "flex", justifyContent: "flex-end" }}>
-        <img className="feature-img" src={feature.imageSrc} alt={`Feature ${index + 1}`} loading="lazy" />
+      {feature.imageSrc!=='' && (
+        <div className="w-full" style={{ transform: hoveredIndex === index ? 'translateY(-10%)' : 'translateY(0)', display: "flex", justifyContent: "flex-end" }}>
+        {/* Replace <img> with <Image> component */}
+        <Image src={feature.imageSrc} alt={`Feature ${index + 1}`} width={60} height={50} />
       </div>
+      )}
+      
       <div className="w-full flex flex-col justify-center relative" style={{ transform: hoveredIndex === index ? 'translateY(-5px)' : 'translateY(0)' }}>
-        <p className="hero-p ml-1" style={{ overflowWrap: "break-word", overflow: "hidden" }}>{feature.description}</p>
+        <p className="hero-p ml-1" onClick={()=>router.push(feature.link)}
+        style={{ overflowWrap: "break-word", overflow: "hidden" }}>
+          {index === features.length - 1 ? 
+         <span style={{fontWeight:"bold"}}>Explore more products &#x2192;</span> 
+          : 
+          feature.description
+          }
+          </p>
         <div className={`border-b border-black absolute bottom-0 left-1 w-full transition-transform transform ${hoveredIndex === index ? "underline-animation" : "underline-animation shrink"}`}></div>
       </div>
     </div>
@@ -97,14 +111,13 @@ const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
         {/* Image Column (Right Half of Screen) */}
         <div className="right-div">
           <div onClick={navigateToStore} onMouseEnter={() => setShowTooltip(true)} onMouseLeave={() => setShowTooltip(false)} onMouseMove={handleMouseMove}>
-          <img className="main-img" src="/ganesha_transparent.png" alt="Summer Styles" loading="lazy" />
-  {showTooltip && (
-    <span className="tooltip" style={{ left: tooltipPosition.x, top: tooltipPosition.y }}>Click to explore all products</span>
-  )}
+            {/* Replace <img> with <Image> component */}
+            <Image className="main-img" src="/ganesha_transparent.png" alt="Summer Styles" width={300} height={300} />
+            {/* {showTooltip && (
+              <span className="tooltip" style={{ left: tooltipPosition.x, top: tooltipPosition.y }}>Click to explore all products</span>
+            )} */}
           </div>
- 
-</div>
-
+        </div>
       </div>
     </div>
   );

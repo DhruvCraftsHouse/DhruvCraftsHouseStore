@@ -177,14 +177,14 @@ useEffect(() => {
  medusa.products.retrieve(productId)
    .then(({ product }) => {
     //  console.log(product.id);
-    // console.log("product test ",product)
-    // console.log("buy get number ",product?.buy_get_num)
-    // console.log("buy get offer ",product?.buy_get_offer)
+    console.log("product test ",product)
+    console.log("buy get number ",product?.buy_get_num)
+    console.log("buy get offer ",product?.buy_get_offer)
 
      setBuyGetNumber(product?.buy_get_num || null);
      setBuyGetOffer(product?.buy_get_offer || null);
      setSalesQuantity(product?.sales_quantity || null);
-     console.log('product', product.discountCode)
+     console.log('product discount', product.discountCode)
      setDiscountCode(product.discountCode || null);
    })
    .catch(error => {
@@ -610,6 +610,9 @@ const recentCategory = fullAncestorCategories[fullAncestorCategories.length - 1]
   //   </div>
   // )
 
+  console.log('buyGetNumber', buyGetNumber)
+  console.log('buyGetOffer', buyGetOffer)
+  console.log('discountCode', discountCode)
   // Render the component with product options and actions
   return (
     <div className="flex flex-col gap-y-2">
