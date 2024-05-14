@@ -722,10 +722,14 @@ const recentCategory = fullAncestorCategories[fullAncestorCategories.length - 1]
       )}
       </div>
       {buyGetNumber && buyGetOffer && (
-        <div>
-          <p style={{color:"green", letterSpacing:"-0.05em"}}>Buy {buyGetNumber} Get {buyGetOffer} % Offer using code {discountCode}</p>
-        </div>
-      )}
+  <div>
+    <p style={{color:"green", letterSpacing:"-0.05em"}}>
+      Buy {buyGetNumber} Get {buyGetOffer} % Offer
+      {discountCode ? ` using code ${discountCode}` : ''}
+    </p>
+  </div>
+)}
+
       
   {/* {product.options && product.options.length > 0 ? (
     <div className="flex flex-col gap-y-4">

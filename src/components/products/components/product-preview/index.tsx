@@ -103,6 +103,15 @@ const thumbnailUrl = thumbnail ? convertThumbnailUrl(thumbnail) : '';
             </Text>
           </div>
         )}
+        {product?.buy_get_num && product.buy_get_offer && (
+  <div>
+    <p style={{color:"green", letterSpacing:"-0.05em"}}>
+      Buy {product?.buy_get_num} Get {product.buy_get_offer} % Offer
+      {product.discountCode ? ` using code ${product.discountCode}` : ''}
+    </p>
+  </div>
+)}
+
     </div>
   </Link>
 )
