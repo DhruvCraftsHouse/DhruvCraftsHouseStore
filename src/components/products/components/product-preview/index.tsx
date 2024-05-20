@@ -96,19 +96,19 @@ const thumbnailUrl = thumbnail ? convertThumbnailUrl(thumbnail) : '';
           )}
         </div>
       </div>
-      {product?.discountCode && product?.buy_get_num && product?.buy_get_offer && (
+      {/* {product?.discountCode && product?.buy_get_num && product?.buy_get_offer && (
           <div>
             <Text style={{color:"green", letterSpacing:"-0.05em"}}>
               Buy {product?.buy_get_num} Get {product?.buy_get_offer} % Offer using {product?.discountCode}
             </Text>
           </div>
-        )}
+        )} */}
         {product?.buy_get_num && product.buy_get_offer && (
   <div>
-    <p style={{color:"green", letterSpacing:"-0.05em"}}>
+    <Text style={{color:"green", letterSpacing:"-0.05em"}}>
       Buy {product?.buy_get_num} Get {product.buy_get_offer} % Offer
       {product.discountCode ? ` using code ${product.discountCode}` : ''}
-    </p>
+    </Text>
   </div>
 )}
 

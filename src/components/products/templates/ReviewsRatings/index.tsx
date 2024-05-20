@@ -271,6 +271,10 @@ const ReviewsRatings = ({ product }: ReviewsRatingsProps) => {
   };
   // Hooks and states for managing product actions
 
+  const transformThumbnailUrl = (url: string | null): string => {
+    if (!url) return '/default-thumbnail.jpg'; // Return a default image URL if no URL is provided
+    return url.replace("http://localhost:9000/uploads", "https://dhruvcraftshouse.com/backend/uploads");
+  };
   const ReviewModal: React.FC<{ isOpen: boolean; onClose: () => void; }> = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
 
@@ -348,7 +352,7 @@ const ReviewsRatings = ({ product }: ReviewsRatingsProps) => {
                 {/* Right part - 25% */}
                 <div style={{ flex: '1' }}>
                   <img
-                    src={product.thumbnail || ''}
+                    src={transformThumbnailUrl(product.thumbnail || '')}
                     alt={product.title}
                     style={{ width: '90%', height: 'auto' }}
                   />

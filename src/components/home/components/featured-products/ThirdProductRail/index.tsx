@@ -229,7 +229,9 @@ interface ThirdProductRailProps {
             </Subtitle>
             {/* )} */}
         </StartAlignedColumn>
-        <EndAlignedColumn onClick={handleClick}>
+        <EndAlignedColumn 
+        // onClick={handleClick}
+        >
           {isImageVisible && firstProduct.images && firstProduct.images.length > 0 && (
             <ImageCarousel images={firstProduct.images} />
             // <ImageCarousel />
