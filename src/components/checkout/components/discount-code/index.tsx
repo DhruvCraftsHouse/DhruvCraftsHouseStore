@@ -80,9 +80,9 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
 
       console.log('discountCode', discountCode,' data.discount_code ',data.discount_code)
       console.log('item.quantity', item.quantity, ' buy_get_num',buy_get_num)
-      if(discountCode && data.discount_code )
+      if(discountCode && data.discount_code && (discountCode === data.discount_code))
         {
-          console.log("both are equal");
+          console.log("both are equal discountCode", discountCode,' data.discount_code ',data.discount_code);
           console.log('inside apply item.quantity', item.quantity , ' buy_get_num',buy_get_num)
           if(buy_get_num && ( item.quantity < buy_get_num))
             {
@@ -162,6 +162,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
     if (discounts && discounts[0]) {
       let allItemsMismatch = true;
 
+      console.log('discounts', discounts)
       for (const item of cart.items) {
         const { discountCode, buy_get_num, title } = item.variant.product;
         if (discountCode === discounts[0].code) {

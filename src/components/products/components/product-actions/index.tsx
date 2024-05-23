@@ -610,9 +610,11 @@ const recentCategory = fullAncestorCategories[fullAncestorCategories.length - 1]
   //   </div>
   // )
 
-  console.log('buyGetNumber', buyGetNumber)
-  console.log('buyGetOffer', buyGetOffer)
-  console.log('discountCode', discountCode)
+  // console.log('buyGetNumber', buyGetNumber)
+  // console.log('buyGetOffer', buyGetOffer)
+  // console.log('discountCode', discountCode)
+
+console.log('product.is_giftcard', product.is_giftcard)
   // Render the component with product options and actions
   return (
     <div className="flex flex-col gap-y-2">
@@ -804,36 +806,36 @@ const recentCategory = fullAncestorCategories[fullAncestorCategories.length - 1]
   )
 ) : null} */}
 
-     
-    
 <Button
-      onClick={() => {
-        if (isInCart) {
-          deleteCartItem(variant?.id) // Call deleteItem if the item is already in the cart
-        } else {
-          addToCart(); // Add to cart if not already in the cart
-        }
-      }}
-      disabled={!inStock || !variant || isInWishlist}
-      variant="primary"
-      className={clsx(
-        "w-full h-10",
-        {
-          "mustard-yellow": isInCart, // Apply mustard yellow style if in cart
-          "other-color": !isInCart, // Apply primary color if not in cart
-        }
-      )}
-      title={isInCart ? "Click to delete item from cart" : ""}
-        style={{borderRadius:"0px", fontSize:"16px", textTransform:"uppercase"}}
-    >
-      {!inStock
-        ? "Out of stock"
-        : !variant
-        ? "Select variant"
-        : isInCart
+  onClick={() => {
+    if (isInCart) {
+      deleteCartItem(variant?.id)
+    } else {
+      addToCart()
+    }
+  }}
+  disabled={!product.is_giftcard && (!inStock || !variant || isInWishlist)}
+  variant="primary"
+  className={clsx(
+    "w-full h-10",
+    {
+      "mustard-yellow": isInCart,
+      "other-color": !isInCart,
+    }
+  )}
+  title={isInCart ? "Click to delete item from cart" : ""}
+  style={{ borderRadius: "0px", fontSize: "16px", textTransform: "uppercase" }}
+>
+  {!product.is_giftcard && !inStock
+    ? "Out of stock"
+    : !variant
+      ? "Select variant"
+      : isInCart
         ? "Already in cart"
         : "Add to cart"}
-    </Button>
+</Button>
+
+
 
       <Button
         onClick={handleAddToWishlist}
