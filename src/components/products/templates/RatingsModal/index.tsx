@@ -217,7 +217,7 @@ const [showSecondForm, setShowSecondForm] = useState(false);
               </div>
 
               <div>
-                <h1 className="mt-9" style={{ fontWeight: 400, fontSize: "16.5px", color: "RGBA(0, 0, 0, 0.87)" }}>
+                <h1 className="mt-9 overall-rating" style={{ fontWeight: 400, fontSize: "16.5px", color: "RGBA(0, 0, 0, 0.87)" }}>
                   I would recommend this to a friend
                 </h1>
                 <div className="radio-buttons-container">
@@ -251,15 +251,12 @@ const [showSecondForm, setShowSecondForm] = useState(false);
                   </label>
                 </div>
               </div>
-              <div>
+              {/* <div>
                 <h1 className="mt-9" style={{ fontWeight: 400, fontSize: "16.5px", color: "RGBA(0, 0, 0, 0.87)" }}>
                   Photos or videos
                 </h1>
                 <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
-                  {/* <button type="button" className="add-photo-button">
-                    <FontAwesomeIcon icon={faCamera} />
-                    Add Photo
-                  </button> */}
+                 
                   <div className="file-upload-container">
                   <button 
   type="button" 
@@ -310,7 +307,7 @@ const [showSecondForm, setShowSecondForm] = useState(false);
                 <div className="info-icon mt-2" style={{ fontSize: "11.5px", letterSpacing: "0.05em", width: "99%" }}>
                   <span className="info-text" style={{ background: "", marginLeft: "1%" }}>You may add up to five photos or videos</span>
                 </div>
-              </div>
+              </div> */}
 
               </>
       )}

@@ -732,8 +732,18 @@ console.log('product.is_giftcard', product.is_giftcard)
   </div>
 )}
 
-      
-  {/* {product.options && product.options.length > 0 ? (
+{variant && inventory_quantity !== undefined ? (
+  inventory_quantity < 8 ? (
+    <p className="flex items-center gap-x-2" style={{ color: "red", fontSize: "15px" }}>
+      Only {inventory_quantity} left in Stock
+    </p>
+  ) : (
+    <p className="flex items-center gap-x-2" style={{ color: "#696969", fontSize: "15px" }}>
+      In Stock
+    </p>
+  ) )
+  : null}
+    {/* {product.options && product.options.length > 0 ? (
     <div className="flex flex-col gap-y-4">
       {product.options.map((option) => (
         <div key={option.id}>
