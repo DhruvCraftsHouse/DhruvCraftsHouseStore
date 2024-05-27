@@ -256,7 +256,7 @@ useEffect(() => {
           >
             <Link
               href={`/products/${product.handle}`}
-              onClick={() => handleLinkClick(`/products/${product.handle}`)}
+              // onClick={() => handleLinkClick(`/products/s${product.handle}`)}
               className="font-medium hover:text-primary transition duration-150 ease-in-out"
             >
               {product.thumbnail && (

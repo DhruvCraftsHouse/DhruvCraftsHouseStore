@@ -220,7 +220,7 @@ const transformThumbnailUrl = (url: string | null): string => {
         <Popover.Button className="h-full" >
         <div className="relative flex items-center">
   <Link href="/wishlist" className="" 
-             onClick={ ()=> handleLinkClick('/wishlist') } 
+            //  onClick={ ()=> handleLinkClick('/wishlist') } 
              >
     {isSideMenuOpen ? "FAVORITES" : "Favorites"}
   </Link>
@@ -264,7 +264,7 @@ const transformThumbnailUrl = (url: string | null): string => {
                   <h3 className="text-large-semi">No Items in Wishlist</h3>
                   {/* Explore Products Button */}
                   <Link href="/store" passHref
-                 onClick={ ()=> handleLinkClick('/store') } 
+                //  onClick={ ()=> handleLinkClick('/store') } 
                   >
                     <Button className='mt-5  py-2 px-4 rounded'>
                       Explore Products
@@ -295,7 +295,7 @@ const transformThumbnailUrl = (url: string | null): string => {
           </div>
             {totalItems > 0 && (
               <Link href="/wishlist" passHref
-              onClick={ ()=> handleLinkClick('/wishlist') } 
+              // onClick={ ()=> handleLinkClick('/wishlist') } 
               >
                 <Button className='mt-5 py-2 px-4 rounded'>
                   Explore Wishlist

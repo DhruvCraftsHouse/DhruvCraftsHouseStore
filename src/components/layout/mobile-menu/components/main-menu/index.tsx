@@ -113,7 +113,9 @@ const MainMenu = () => {
         <div className="flex flex-col flex-1 text-large-regular text-gray-900">
           <ul className="flex flex-col gap-y-2">
             <li className="bg-gray-50 p-4 rounded-rounded">
-              <Link href="/store" onClick={() => handleLinkClick(`/store`)}>
+              <Link href="/store"
+              //  onClick={() => handleLinkClick(`/store`)}
+               >
                 <button
                   className="flex items-center justify-between w-full"
                   onClick={close}
@@ -131,7 +133,9 @@ const MainMenu = () => {
                     key={collection.id}
                     className="bg-gray-50 p-4 rounded-rounded"
                   >
-                    <Link href={`/collections/${collection.handle}`} onClick={() => handleLinkClick(`/collections/${collection.handle}`)}>
+                    <Link href={`/collections/${collection.handle}`}
+                    //  onClick={() => handleLinkClick(`/collections/${collection.handle}`)}
+                     >
                       <button
                         className="flex items-center justify-between w-full"
                         onClick={close}
@@ -153,7 +157,9 @@ const MainMenu = () => {
         <div className="flex flex-col">
           <div className="flex flex-col gap-y-8 text-small-regular">
             <div className="flex flex-col gap-y-4 ">
-              <Link href={`/wishlist`} passHref onClick={() => handleLinkClick(`/wishlist`)}>
+              <Link href={`/wishlist`} passHref 
+              // onClick={() => handleLinkClick(`/wishlist`)}
+              >
                 <button
                   className="flex items-center justify-between border-b border-gray-200 py-2 w-full"
                   onClick={close}
@@ -167,7 +173,9 @@ const MainMenu = () => {
             {!customer ? (
               <div className="flex flex-col gap-y-4 ">
                 <span className="text-gray-700 uppercase">Account</span>
-                <Link href={`/account/login`} passHref onClick={() => handleLinkClick(`/account/login`)}>
+                <Link href={`/account/login`} passHref 
+                // onClick={() => handleLinkClick(`/account/login`)}
+                >
                   <button
                     className="flex items-center justify-between border-b border-gray-200 py-2 w-full"
                     onClick={close}
@@ -181,7 +189,9 @@ const MainMenu = () => {
             ) : (
               <div className="flex flex-col gap-y-4">
                 <span className="text-gray-700 uppercase">Signed in as</span>
-                <Link href={`/account`} passHref onClick={() => handleLinkClick(`/account/login`)}>
+                <Link href={`/account`} passHref 
+                // onClick={() => handleLinkClick(`/account/login`)}
+                >
                   <button
                     className="flex items-center justify-between border-b border-gray-200 py-2 w-full"
                     onClick={close}
@@ -205,39 +215,39 @@ const MainMenu = () => {
               {showForBuyersMenu && (
                 <ul className="pl-4">
                   <li><Link href="/" onClick={() =>{
-                     handleLinkClick(`/`)
+                    //  handleLinkClick(`/`)
                      close();
                     }}>GUARANTEES</Link></li>
                   <li><Link href="/refundandcancellation" onClick={() => {
-                    handleLinkClick(`/refundandcancellation`)
+                    // handleLinkClick(`/refundandcancellation`)
                     close();
                   }}>REFUND AND CANCELLATION POLICY</Link></li>
                   <li><Link href="/shippinganddelivery" onClick={() => {
-                    handleLinkClick(`/shippinganddelivery`)
+                    // handleLinkClick(`/shippinganddelivery`)
                     close();
                   }}>SHIP AND DELIVERY POLICY</Link></li>
                   <li><Link href="/" onClick={() => {
-                    handleLinkClick(`/`)
+                    // handleLinkClick(`/`)
                     close();
                   }}>QUESTIONS AND ANSWERS</Link></li>
                   <li><Link href="/" onClick={() => {
-                    handleLinkClick(`/`)
+                    // handleLinkClick(`/`)
                     close();
                   }}>BLOG</Link></li>
                   <li><Link href="/contact" onClick={() => {
-                    handleLinkClick(`/contact`)
+                    // handleLinkClick(`/contact`)
                     close();
                   }}>ASK A QUESTION</Link></li>
                   <li><Link href="/contact" onClick={() => {
-                    handleLinkClick(`/contact`)
+                    // handleLinkClick(`/contact`)
                     close();
                   }}>CONTACT US</Link></li>
                   <li><Link href="/termsandconditions" onClick={() => {
-                    handleLinkClick(`/termsandconditions`)
+                    // handleLinkClick(`/termsandconditions`)
                     close();
                   }}>TERMS AND CONDITIONS</Link></li>
                   <li><Link href="/privacypolicy" onClick={() => {
-                    handleLinkClick(`/privacypolicy`)
+                    // handleLinkClick(`/privacypolicy`)
                     close();
                   }}>PRIVACY POLICY</Link></li>
                 </ul>

@@ -64,6 +64,8 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
     mode: "onSubmit",
   });
 
+  console.log('discounts', discounts)
+
   const onApply = (data: DiscountFormValues) => {
     console.log('data', data.discount_code)
     // console.log('cart.items', cart.items)
@@ -82,6 +84,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
       console.log('item.quantity', item.quantity, ' buy_get_num',buy_get_num)
       if(discountCode && data.discount_code && (discountCode === data.discount_code))
         {
+          
           console.log("both are equal discountCode", discountCode,' data.discount_code ',data.discount_code);
           console.log('inside apply item.quantity', item.quantity , ' buy_get_num',buy_get_num)
           if(buy_get_num && ( item.quantity < buy_get_num))
@@ -90,6 +93,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                return;
             }
         }
+        
     }
   
  

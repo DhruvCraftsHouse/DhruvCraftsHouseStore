@@ -65,7 +65,8 @@ const handleLinkClick = (targetPath: string) => {
                 <br />
                 {customer.billing_address?.postal_code && (
                   <Link className="hover:text-ui-fg-base" href="/cart" 
-                  onClick={ ()=> handleLinkClick('/cart') }>
+                  // onClick={ ()=> handleLinkClick('/cart') }
+                  >
                     Deliver to <span style={{ fontWeight: 'bold' }}>{customer.billing_address.postal_code}</span>
                   </Link>
                 )}
@@ -75,7 +76,7 @@ const handleLinkClick = (targetPath: string) => {
               <Link href="/account"  
                onClick={()=>{
                 setCurrentView(LOGIN_VIEW.SIGN_IN)
-                handleLinkClick('/account/login')
+                // handleLinkClick('/account/login')
               }}>
                 SIGN IN
                 {/* <Button onClick={() => setCurrentView(LOGIN_VIEW.SIGN_IN)} style={{padding:"6px 9px", borderRadius:"0px"}}>Sign In</Button> */}

@@ -135,7 +135,8 @@ const FooterNav = () => {
     {collections && collections.map((collection) => (
       <ul key={collection.id}>
         <Link href={`/collections/${collection.handle}`} className="option-list"
-          onClick={() => handleLinkClick(`/collections/${collection.handle}`)}>
+          // onClick={() => handleLinkClick(`/collections/${collection.handle}`)}
+          >
           {collection.title}
         </Link>
       </ul>
@@ -164,7 +165,9 @@ const FooterNav = () => {
   <ul className="list-none mt-3" style={{lineHeight:"3em", textTransform:"uppercase", fontSize:"8px"}}>
     {product_categories && product_categories.map(category => (
       <li key={category.id}>
-        <Link className="option-li" href={`/${category.handle}`} onClick={() => handleLinkClick(`/${category.handle}`)}>
+        <Link className="option-li" href={`/${category.handle}`} 
+        // onClick={() => handleLinkClick(`/${category.handle}`)}
+        >
           {category.name}
         </Link>
       </li>
@@ -239,7 +242,7 @@ const FooterNav = () => {
               {/* Replace with actual links or text */}
               <li className="option-list">GUARANTEES</li>
               <li ><Link href="/"
-                         onClick={ ()=> handleLinkClick('/') } 
+                        //  onClick={ ()=> handleLinkClick('/') } 
               >PAYMENT AND DELIVERY</Link></li>
               <li className="option-list">FITTING</li>
               <li className="option-list">CERTIFICATION</li>
@@ -275,7 +278,9 @@ const FooterNav = () => {
                   
                  
           <div className="" style={{fontSize: "10.5px", fontFamily:"Avenir Next LT W02 Regular",letterSpacing:"0.1em" }}>
-            <h3 className="option-list" style={{ fontWeight: "bold",fontSize:"10.5px"}}> <Link href="/contact" onClick={ ()=> handleLinkClick('/contact') }>CONTACTS</Link></h3>
+            <h3 className="option-list" style={{ fontWeight: "bold",fontSize:"10.5px"}}> <Link href="/contact" 
+            // onClick={ ()=> handleLinkClick('/contact') }
+            >CONTACTS</Link></h3>
             <div className="mt-4" style={{fontSize:"9px"}}>MAIN OFFICE</div>
             <div className="mt-1" style={{color:"#7F3F98", fontWeight: "bolder",letterSpacing:"0.2em", fontFamily:"Avenir Next LT W02 Regular", fontSize:"10px"}}> <span style={{fontWeight: 900}}>(+91) 7259533331</span></div>
             <div className="mt-4" style={{fontSize:"9px"}}>CUSTOMER SERVICE</div>

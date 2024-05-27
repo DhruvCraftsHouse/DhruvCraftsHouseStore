@@ -19,9 +19,6 @@ const LineItemUnitPrice = ({
   const hasReducedPrice = (originalPrice * item.quantity || 0) > item.total!
   const reducedPrice = (item.total || 0) / item.quantity!
 
-  console.log('reducedPrice', reducedPrice)
-  console.log('item.unit_price', item.unit_price)
-
   return (
     <div className="flex flex-col text-black justify-center h-full">
       {hasReducedPrice && (
@@ -51,7 +48,7 @@ const LineItemUnitPrice = ({
         })}
       >
         {formatAmount({
-          amount: item.unit_price || 0,
+          amount: reducedPrice || item.unit_price || 0,
           region: region,
           includeTaxes: false,
         })}

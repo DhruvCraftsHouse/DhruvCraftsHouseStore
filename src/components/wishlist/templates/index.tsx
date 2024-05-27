@@ -238,7 +238,7 @@ const WishlistTemplate = () => {
 
             // console.log("listItems at delete ",listItems)
             window.location.href = '/cart';
-            handleLinkClick('/cart')
+            // handleLinkClick('/cart')
           },
           style: { marginRight: '20px' } // Add this line
         },

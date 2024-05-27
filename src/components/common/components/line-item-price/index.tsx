@@ -15,18 +15,9 @@ const LineItemPrice = ({
   region,
   style = "default",
 }: LineItemPriceProps) => {
-
-  // console.log('item lineitemprice', item)
   const originalPrice =
     (item.variant as CalculatedVariant).original_price * item.quantity
-
-    const variantPrice = (item.variant as CalculatedVariant).original_price 
-    const itemQuantity = item.quantity
-    // console.log('variantPrice', variantPrice)
-    // console.log('itemQuantity', itemQuantity)
-    const totalPrice = variantPrice * itemQuantity
   const hasReducedPrice = (item.total || 0) < originalPrice
-  // console.log('hasReducedPrice', hasReducedPrice)
 
   return (
     <div className="flex flex-col gap-x-2 text-ui-fg-subtle items-end">
@@ -58,7 +49,7 @@ const LineItemPrice = ({
           })}
         >
           {formatAmount({
-            amount: item.subtotal || 0,
+            amount: item.total || 0,
             region: region,
             includeTaxes: false,
           })}

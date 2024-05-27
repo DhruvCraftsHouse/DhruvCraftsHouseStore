@@ -136,8 +136,8 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ isSideMenuOpen }) => 
           <Popover.Panel
             static
             ref={panelRef}
-            className={`fixed top-0 right-0 bottom-0 z-50 text-sm m-0 backdrop-blur-2xl ${isPopoverOpen ? "" : "hidden"}`}
-            style={{ height: '100vh', width: "40vw" }}
+            className={`fixed top-0 right-0 bottom-0 z-50 text-sm m-0  ${isPopoverOpen ? "" : "hidden"}`}
+            style={{ height: '100vh', width: "40vw",background:"black" }}
           >
             <div className="flex flex-col bg-[rgba(0,0,0,0.9)] justify-between p-9 text-white" style={{ color: "white", paddingBottom: "75%" }}>
               <button
@@ -177,7 +177,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ isSideMenuOpen }) => 
                     width: "100%",
                     margin: "12px 0",
                     color: "white",
-                    background: "black",
+                    background: "transparent",
                     fontSize: "22px",
                     fontFamily: "Klein, sans-serif",
                     fontWeight: 500,
@@ -207,7 +207,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ isSideMenuOpen }) => 
                     >
                       <Link
                         href={`/products/${product.handle}`}
-                        onClick={() => handleLinkClick(`/products/${product.handle}`)}
+                        // onClick={() => handleLinkClick(`/products/${product.handle}`)}
                         className="font-medium hover:text-primary transition duration-150 ease-in-out"
                       >
                         {product.thumbnail && (

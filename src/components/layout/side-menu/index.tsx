@@ -172,7 +172,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ navBackground, searchModalOpen, onO
 <div className="inline-flex space-x-4 justify-center ml-8 text-black" style={{ fontFamily: "Avenir Next LT W02 Regular" }}>
         <Link href="/"
                    onClick={ ()=> {
-                    handleLinkClick('/')
+                    // handleLinkClick('/')
                     close();
                    }} 
          className="hover:underline" style={{ fontSize: "10px", letterSpacing: "0.15em", fontWeight: 600 }}>DIAMONDS
@@ -200,7 +200,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ navBackground, searchModalOpen, onO
                  <Link
    href="/"
    onClick={ ()=> {
-    handleLinkClick('/') 
+    // handleLinkClick('/') 
    close();
   } } 
    className="text-xl flex-grow text-black"
@@ -228,14 +228,14 @@ const SideMenu: React.FC<SideMenuProps> = ({ navBackground, searchModalOpen, onO
                 <li>
                   <Link href="/refundandcancellation"
                                      onClick={ ()=> {
-                                      handleLinkClick('/refundandcancellation')
+                                      // handleLinkClick('/refundandcancellation')
                                       close();
                                     } } 
                   >Refund and Cancellation Policy</Link>
                   </li>
                 <li><Link href="/shippinganddelivery"
                 onClick={ ()=> {
-                  handleLinkClick('/shippinganddelivery') 
+                  // handleLinkClick('/shippinganddelivery') 
                 close();
               }} 
                 >Ship and Delivery Policy</Link></li>
@@ -244,19 +244,19 @@ const SideMenu: React.FC<SideMenuProps> = ({ navBackground, searchModalOpen, onO
                 <li>Ask a Question</li>
                 <li><Link href="/contact"
  onClick={ ()=> {
-  handleLinkClick('/contact') 
+  // handleLinkClick('/contact') 
  close();
 }} 
                 >Contact US </Link></li>
                 <li><Link href="/termsandconditions"
                  onClick={ ()=> {
-                  handleLinkClick('/termsandconditions')
+                  // handleLinkClick('/termsandconditions')
                   close();
                 } } 
                 >Terms and Conditions</Link></li>
                 <li style={{fontWeight:"bold",marginTop:"10%"}}><Link href="/privacypolicy"
                                  onClick={ ()=> {
-                                  handleLinkClick('/privacypolicy')
+                                  // handleLinkClick('/privacypolicy')
                                   close();
                                 } } 
                 >Privacy Policy</Link></li>
@@ -285,7 +285,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ navBackground, searchModalOpen, onO
   </div>
   <Link href="/"
              onClick={ ()=> {
-              handleLinkClick('/')
+              // handleLinkClick('/')
               close();
             } } 
    className="text-sm hover:underline block italic text-center" style={{ fontFamily: "Warnock Pro Display",background:"",textAlign:"left",color:"black",fontWeight: 400 }}>Create your own decoration <ArrowRightMini className="inline-block" />

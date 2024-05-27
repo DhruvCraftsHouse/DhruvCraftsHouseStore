@@ -53,7 +53,9 @@ const [isNavigating, setIsNavigating] = useState(false);
       <DiscountCode cart={cart} />
       <Divider />
       <CartTotals data={cart} />
-      <Link href="/checkout"  onClick={() => handleLinkClick('/checkout')}>
+      <Link href="/checkout" 
+      //  onClick={() => handleLinkClick('/checkout')}
+       >
         <Button className="w-full h-10">Go to checkout</Button>
       </Link>
     </div>
