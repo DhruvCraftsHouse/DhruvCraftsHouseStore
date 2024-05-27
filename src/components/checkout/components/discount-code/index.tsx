@@ -65,7 +65,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
   });
 
   const onApply = (data: DiscountFormValues) => {
-    // console.log('data', data)
+    console.log('data', data.discount_code)
     // console.log('cart.items', cart.items)
 
     console.log("clicked onApply");
@@ -158,55 +158,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
     );
   };
 
-  useEffect(() => {
-    if (discounts && discounts[0]) {
-      let allItemsMismatch = true;
-
-      console.log('discounts', discounts)
-      for (const item of cart.items) {
-        const { discountCode, buy_get_num, title } = item.variant.product;
-        if (discountCode === discounts[0].code) {
-          allItemsMismatch = false;
-
-          if (buy_get_num && item.quantity < buy_get_num) {
-            if (window.confirm(`Quantity of ${title} is less than ${buy_get_num}. Would you like to remove the discount?`)) {
-              onRemove();
-            }
-            return;
-          }
-        }
-      }
-
-      if (allItemsMismatch) {
-        if (window.confirm(`Discount ${discounts[0].code} cannot be applied if the specified product is not in the cart. Would you like to remove the discount?`)) {
-          onRemove();
-        }
-      }
-    }
-  }, [cart.items, discounts]);
-
-  // if(discounts && discounts[0])
-  //   {
-
-    
-  // for (const item of cart.items) {
-  //   const { discountCode, buy_get_num, title } = item.variant.product;
-  //   if (discountCode && discounts[0].code && discountCode === discounts[0].code) {
-
-  //     console.log('item.quantity', item.quantity)
-  //     if (buy_get_num && ( item.quantity >= buy_get_num )) {
-  //       alert(`Discount can only be applied if the product ${title}'s ${item.quantity} quantity is greater than ${buy_get_num} for the specified discount code.`);
-  //       return;
-  //     }
-  //   } else if (discountCode !== discounts[0].code) {
-  //     if (window.confirm(`Discount ${discounts[0].code} cannot be applied if the specified product is not in the cart. Would you like to remove the discount?`)) {
-  //       onRemove();
-  //       return;
-  //     }
-  //   }
-  // }
-  //   }
-
+ 
   return (
     <div className="w-full bg-white flex flex-col">
       <div className="txt-medium">
