@@ -1,23 +1,29 @@
-import { getPercentageDiff } from "@/lib/util/get-precentage-diff"
-import { LineItem, Region } from "@medusajs/medusa"
-import clsx from "clsx"
-import { formatAmount } from "medusa-react"
-import { CalculatedVariant } from "@/types/medusa"
+import { getPercentageDiff } from "@/lib/util/get-precentage-diff";
+import { LineItem, Region } from "@medusajs/medusa";
+import clsx from "clsx";
+import { formatAmount } from "@/lib/util/prices";
+import { CalculatedVariant } from "@/types/medusa";
 
 type LineItemUnitPriceProps = {
-  item: Omit<LineItem, "beforeInsert">
-  region: Region
-  style?: "default" | "tight"
-}
+  item: Omit<LineItem, "beforeInsert">;
+  region: Region;
+  style?: "default" | "tight";
+};
 
 const LineItemUnitPrice = ({
   item,
   region,
   style = "default",
 }: LineItemUnitPriceProps) => {
-  const originalPrice = (item.variant as CalculatedVariant).original_price
-  const hasReducedPrice = (originalPrice * item.quantity || 0) > item.total!
-  const reducedPrice = (item.total || 0) / item.quantity!
+  const originalPrice = (item.variant as CalculatedVariant).original_price;
+  const hasReducedPrice = (originalPrice * item.quantity || 0) > item.total!;
+  const reducedPrice = (item.total || 0) / item.quantity!;
+  const taxPerUnit = (item.tax_total || 0) / item.quantity!;
+
+  const adjustedReducedPrice = reducedPrice - taxPerUnit;
+  const adjustedUnitPrice = (item.unit_price || 0) - taxPerUnit;
+
+  console.log("item", item);
 
   return (
     <div className="flex flex-col text-black justify-center h-full">
@@ -37,7 +43,7 @@ const LineItemUnitPrice = ({
           </p>
           {style === "default" && (
             <span className="text-black">
-              -{getPercentageDiff(originalPrice, reducedPrice || 0)}%
+              -{getPercentageDiff(originalPrice, adjustedReducedPrice || 0)}%
             </span>
           )}
         </>
@@ -48,13 +54,13 @@ const LineItemUnitPrice = ({
         })}
       >
         {formatAmount({
-          amount: reducedPrice || item.unit_price || 0,
+          amount: adjustedReducedPrice || adjustedUnitPrice || 0,
           region: region,
           includeTaxes: false,
         })}
       </span>
     </div>
-  )
-}
+  );
+};
 
-export default LineItemUnitPrice
+export default LineItemUnitPrice;

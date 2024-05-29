@@ -32,10 +32,13 @@ const RelatedProducts = ({ product }: RelatedProductsProps) => {
     if (product.collection_id) {
       params.collection_id = [product.collection_id]
     }
+    if (product.categories && product.categories[0]) {
+      params.category_id = [product.categories[0].id]
+    }
 
-    // if (product.tags) {
-    //   params.tags = product.tags.map((t) => t.value)
-    // }
+    if (product.tags) {
+      params.tags = product.tags.map((t) => t.value)
+    }
 
     params.is_giftcard = false
 

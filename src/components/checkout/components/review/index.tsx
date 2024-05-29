@@ -17,7 +17,7 @@ const Review = () => {
 
   const editingOtherSteps = isEditAddresses || isEditShipping || isEditPayment
 
-  console.log('cart place order', cart)
+  console.log('cart place order review', cart)
   return (
     <div className="bg-white px-4 small:px-8">
       <div className="flex flex-row items-center justify-between mb-6">

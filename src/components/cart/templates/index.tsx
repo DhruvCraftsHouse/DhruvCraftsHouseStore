@@ -76,7 +76,7 @@ const CartTemplate = () => {
               )}
 
              {/* Display Discounts if they exist */}
-             {discounts && discounts.length > 0 && (
+             {/* {discounts && discounts.length > 0 && (
  <div>
     {discounts
       .filter(discount => discount != null) // Filter out null or undefined elements
@@ -88,7 +88,7 @@ const CartTemplate = () => {
         </div>
       ))}
  </div>
-)}
+)} */}
               <ItemsTemplate region={cart?.region} items={items} />
             </div>
             <div className="relative">

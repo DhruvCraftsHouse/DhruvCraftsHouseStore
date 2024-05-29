@@ -487,6 +487,7 @@ const ReviewsRatings = ({ product }: ReviewsRatingsProps) => {
     return searchReviews(filteredReviews);
   }, [reviews, sortKey, selectedRatings, searchQuery]);
 
+  console.log('displayReviews', displayReviews)
   return (
     <div id="reviews-ratings" className="product-page-constraint">
       <div className="flex flex-col items-center text-center mb-16">
@@ -587,6 +588,12 @@ const ReviewsRatings = ({ product }: ReviewsRatingsProps) => {
                       <div style={{ fontSize: '24px', fontWeight: 'bold', marginTop: '4px' }}>
                         {review.commentTitle}
                       </div>
+                      {review.commentText && (
+ <div style={{ fontSize: '18px', fontWeight: 'bold', marginTop: '4px' }}>
+ {review.commentText}
+</div>
+                      )}
+                     
                       <div style={{ display: 'flex', alignItems: 'center', marginTop: '8px' }}>
                         <div style={{ fontSize: '14px', marginRight: '8px' }}>
                           Was this review helpful to you?

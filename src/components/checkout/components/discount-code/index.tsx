@@ -8,6 +8,7 @@ import Trash from "@/components/common/icons/trash";
 import { formatAmount, useCart, useUpdateCart } from "medusa-react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
 type DiscountFormValues = {
   discount_code: string;
@@ -22,13 +23,6 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
   const { mutate, isLoading } = useUpdateCart(id);
   const { setCart } = useCart();
 
-
-  // console.log('cart', cart)
-  // console.log('discounts', discounts)
-
- 
-
-
   const { isLoading: mutationLoading, mutate: removeDiscount } = useMutation(
     (payload: { cartId: string; code: string }) => {
       return medusaClient.carts.deleteDiscount(payload.cartId, payload.code);
@@ -36,10 +30,9 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
   );
 
   const appliedDiscount = useMemo(() => {
-
     if (!discounts || !discounts.length) {
       return undefined;
-    } 
+    }
 
     switch (discounts[0].rule.type) {
       case "percentage":
@@ -49,7 +42,6 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
           amount: discounts[0].rule.value,
           region: region,
         })}`;
-
       default:
         return "Free shipping";
     }
@@ -64,52 +56,128 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
     mode: "onSubmit",
   });
 
-  console.log('discounts', discounts)
-
-  const onApply = (data: DiscountFormValues) => {
-    console.log('data', data.discount_code)
-    // console.log('cart.items', cart.items)
-
-    console.log("clicked onApply");
-    let isEligibleForDiscount = true;
-    let failedItemTitle = '';
-    let failedItemBuyGetNum;
+  const onApply = async (data: DiscountFormValues) => {
+    console.log("data", data.discount_code);
   
-    for (const item of cart.items) {
-      const { discountCode, buy_get_num, title } = item.variant.product;
-      // console.log('item', item)
-      console.log('discountCode', discountCode,'buy_get_num',buy_get_num,'title',title)
-
-      console.log('discountCode', discountCode,' data.discount_code ',data.discount_code)
-      console.log('item.quantity', item.quantity, ' buy_get_num',buy_get_num)
-      if(discountCode && data.discount_code && (discountCode === data.discount_code))
+    try {
+      const discountListResponse = await axios.get(
+        "https://dhruvcraftshouse.com/backend/store/discountlist",
         {
-          
-          console.log("both are equal discountCode", discountCode,' data.discount_code ',data.discount_code);
-          console.log('inside apply item.quantity', item.quantity , ' buy_get_num',buy_get_num)
-          if(buy_get_num && ( item.quantity < buy_get_num))
-            {
-              alert(`Discount can only be applied if the product ${title}'s quantity is greater than ${buy_get_num} for the specified discount code.`);
-               return;
-            }
+          params: {
+            discountCode: data.discount_code,
+          },
         }
-        
-    }
+      );
+      console.log("Discount list response:", discountListResponse.data);
   
- 
-
-    mutate(
-      {
-        discounts: [{ code: data.discount_code }],
-      },
-      {
-        onSuccess: ({ cart }) => setCart(cart),
-        onError: () => {
-          checkGiftCard(data.discount_code);
-        },
+      if (!discountListResponse.data || !discountListResponse.data.discount) {
+        console.error("No discount data available");
+        if (!discountListResponse.data) {
+          // If there is no data in the response, avoid further processing.
+          alert("No discount data received from the server");
+          return;
+        }
+        // If discount data is missing but response exists, continue with default eligibility.
+        // alert("Discount information is incomplete or missing");
+        mutate(
+          {
+            discounts: [{ code: data.discount_code }],
+          },
+          {
+            onSuccess: ({ cart }) => setCart(cart),
+            onError: () => {
+              checkGiftCard(data.discount_code);
+            },
+          }
+        );
+        return;
       }
-    );
+  
+      const discountData = discountListResponse.data.discount;
+      const discountId = discountData.id;
+      const conditions = discountData.rule.conditions;
+  
+      let conditionId = null;
+      for (let condition of conditions) {
+        if (condition.type === "products") {
+          conditionId = condition.id;
+          break;
+        }
+      }
+  
+      console.log("Discount ID:", discountId);
+      console.log("Condition ID for 'products':", conditionId);
+  
+      let isEligible = true; // Assume eligibility unless checked against specific conditions
+  
+      // Only fetch products and check eligibility if there is a specific condition ID
+      if (conditionId && discountId) {
+        const productDiscountResponse = await axios.get(`https://dhruvcraftshouse.com/backend/store/productDiscount`, {
+          params: {
+            discount_id: discountId,
+            conditionId: conditionId,
+          },
+        });
+  
+        console.log('productDiscountResponse', productDiscountResponse)
+        const eligibleProductIds = productDiscountResponse.data.products.map(product => product.id);
+        console.log("Eligible Product IDs:", eligibleProductIds);
+  
+        let matchedItemDetails = null;
+
+        // Check if any cart item is eligible for the discount
+        isEligible = cart.items.some(item => eligibleProductIds.includes(item.variant.product.id));
+
+        {isEligible && (
+        cart.items.forEach(item => {
+          if (eligibleProductIds.includes(item.variant.product.id)) {
+           
+            isEligible = true;
+            matchedItemDetails = {
+              productId: item.variant.product.id,
+              buy_get_num: item.variant.product.buy_get_num,
+              quantity: item.quantity,
+              title: item.variant.product.title // assuming title is available under product
+            };
+            if (item.variant.product.buy_get_num && item.quantity < item.variant.product.buy_get_num) {
+              isEligible = false
+              alert(`Quantity of ${item.variant.product.title} is not eligible for discount. Requires at least ${item.variant.product.buy_get_num} to apply.`);
+              return;
+            }
+            console.log("Matched Item:", matchedItemDetails);
+          }
+        })
+      )}
+      }
+  
+      if (!isEligible) {
+        alert("Discount code not applicable");
+        return;
+      }
+  
+      // If eligible, apply the discount
+      mutate(
+        {
+          discounts: [{ code: data.discount_code }],
+        },
+        {
+          onSuccess: ({ cart }) => setCart(cart),
+          onError: () => {
+            checkGiftCard(data.discount_code);
+          },
+        }
+      );
+    } catch (error) {
+      console.error("Error fetching discount or product list:", error);
+      if (error.response && error.response.data.error === "Discount code, gift card, or product not found") {
+        alert("Discount Code is invalid");
+      } else {
+        console.error("Unexpected error:", error.message || "An error occurred");
+      }
+    }
   };
+  
+  
 
   const checkGiftCard = (code: string) => {
     mutate(
@@ -162,7 +230,6 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
     );
   };
 
- 
   return (
     <div className="w-full bg-white flex flex-col">
       <div className="txt-medium">
@@ -247,7 +314,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default DiscountCode;

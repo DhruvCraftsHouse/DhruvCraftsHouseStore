@@ -128,9 +128,9 @@ const Item = ({ item, region, type = "full" }: ItemProps) => {
       <Table.Cell className="text-left">
         <Text className="txt-medium-plus text-ui-fg-base">{item.title}</Text>
         <LineItemOptions variant={item.variant} />
-        {item.variant.product.buy_get_offer && (
+        {/* {item.variant.product.buy_get_offer && (
            <Text className="txt-medium-plus text-ui-fg-base" style={{color:"green"}}>Buy {item.variant.product.buy_get_num} Get {item.variant.product.buy_get_offer}% off using code: &quot;{item.variant.product.discountCode}&quot;</Text>
-        )}
+        )} */}
 
 
       </Table.Cell>

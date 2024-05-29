@@ -410,7 +410,7 @@ const ProductActionsInner: React.FC<ProductActionsInnerProps> = ({ product, onVa
                   {selectedPrice.calculated_price}
                 </span>
                 <span className="pt-1 pl-2" style={{ fontWeight: 400, color: "#666666", fontSize: "14px" }}>
-                  Price excl. VAT
+                  Price excl. GST
                 </span>
               </p>
             )}
@@ -424,7 +424,7 @@ const ProductActionsInner: React.FC<ProductActionsInnerProps> = ({ product, onVa
                     {selectedPrice.calculated_price}
                   </span>
                   <span className="pt-1 pl-2" style={{ fontWeight: 400, color: "#666666", fontSize: "14px" }}>
-                    Price excl. VAT
+                    Price excl. GST
                   </span>
                 </p>
                 <p style={{ background: "transparent" }}>
@@ -540,9 +540,9 @@ const ProductActionsInner: React.FC<ProductActionsInnerProps> = ({ product, onVa
         style={{ borderRadius: "0px", fontSize: "16px", textTransform: "uppercase" }}
       >
         {!product.is_giftcard && !inStock
-          ? "Out of stock"
+          ? "Currently Out of stock"
           : !variant
-            ? "Select variant"
+            ? "Currently Out of stock to add to cart"
             : isInCart
               ? "Already in cart"
               : "Add to cart"}
@@ -555,9 +555,9 @@ const ProductActionsInner: React.FC<ProductActionsInnerProps> = ({ product, onVa
         style={{ borderRadius: "0px", fontSize: "16px", textTransform: "uppercase", background: "#F6F6F6" }}
       >
         {!inStock
-          ? "Out of stock"
+          ? "Currently Out of stock"
           : !variant
-            ? "Select variant"
+            ? "Currently Out of stock to add to wishlist"
             : (
               <>
                 {isInWishlist ? (

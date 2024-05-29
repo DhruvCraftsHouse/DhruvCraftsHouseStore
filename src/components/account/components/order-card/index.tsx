@@ -20,6 +20,8 @@ const OrderCard = ({ order }: OrderCardProps) => {
     return order.items.length
   }, [order])
 
+  console.log('order.items', order.items)
+
   return (
     <div className="bg-white flex flex-col">
       <div className="uppercase text-large-semi mb-1">#{order.display_id}</div>

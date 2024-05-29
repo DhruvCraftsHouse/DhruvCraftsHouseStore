@@ -17,6 +17,7 @@ import OtpInput from 'react-otp-input';  // Importing OTP input component
 import { useRef } from 'react';  // Importing useRef from React
 import FloatingLabelInput from "./FloatingLabelInput";  // Importing custom component FloatingLabelInput
 import { emailPattern, passwordPattern, phonePattern, namePattern, phoneNumberPattern, lastNamePattern } from "@/lib/util/regex";
+
 // Defining the interface for RegisterCredentials
 interface RegisterCredentials extends FieldValues {
   first_name: string;
@@ -25,6 +26,28 @@ interface RegisterCredentials extends FieldValues {
   password: string;
   phone?: string;
 }
+
+const validatePassword = (password: string) => {
+  console.log('password', password)
+  const errors = [];
+  if (password.length < 8) {
+    console.log("must be at least 8 characters long");
+    errors.push("must be at least 8 characters long");
+  }
+  if (!/[A-Za-z]/.test(password)) {
+    console.log("include at least one letter");
+
+    errors.push("include at least one letter");
+  }
+  if (!/\d/.test(password)) {
+    console.log("include at least one number");
+
+    errors.push("include at least one number");
+  }
+
+  return errors.length === 0 || `Password ${errors.join(', ')}.`;
+};
+
 
 // Main Register component
 const Register = () => {
@@ -64,8 +87,7 @@ const Register = () => {
 
   useEffect(() => {
     setValue('phone', '+91');
-   }, []);
-   
+  }, []);
 
   // Function to create a new customer and handle email verification
   const createCustomer = async (credentials: any) => {
@@ -76,9 +98,9 @@ const Register = () => {
       await medusaClient.customers.create(credentials)
         .then(() => {
           refetchCustomer();
-          // console.log("First name:", credentials.first_name);
-          // console.log("Last name:", credentials.last_name);
-          // console.log("Email:", credentials.email);
+          console.log("First name:", credentials.first_name);
+          console.log("Last name:", credentials.last_name);
+          console.log("Email:", credentials.email);
           router.push("/account");
         })
         .catch(handleError);
@@ -100,36 +122,15 @@ const Register = () => {
     }
   };
 
-
-  // Custom validation for password
-const validatePassword = (password: any) => {
-  const errors = [];
-  if (password.length < 8) {
-    errors.push("must be at least 8 characters long");
-  }
-  if (!/[A-Za-z]/.test(password)) {
-    errors.push("include at least one letter");
-  }
-  if (!/\d/.test(password)) {
-    errors.push("include at least one number");
-  }
-
-  return errors.length === 0 || `Password ${errors.join(', ')}.`;
-};
-
   // Form submission handler
   const onSubmit = handleSubmit(async (credentials) => {
     // console.log("credentials ", credentials);  // Logging user credentials
     setCredentials(credentials);  // Setting user credentials
 
-    // Regex patterns for password, email, and phone validation
-    // const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    // const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    // const phonePattern = /^\+91\d{10}$/;
-
     // Validation checks
     if (!passwordPattern.test(credentials.password)) {
-      toast.error("Password should be at least 8 characters long and should include at least one letter and one number");  // Displaying password error toast
+      console.log("inside toast error passwordPattern ",passwordPattern," credentials.password ",);
+      toast.error("Password should be at least 8 characters long and should include at least one letter, one number, and one special character.");  // Displaying password error toast
       return;
     }
 
@@ -143,8 +144,6 @@ const validatePassword = (password: any) => {
       return;
     }
 
-
-
     // Send OTP to the provided email
     try {
       // Check if the customer already exists
@@ -156,13 +155,9 @@ const validatePassword = (password: any) => {
         toast.error("Customer email already exists. Please log in.");
         setShowOtpInput(false);
         return;  // Exit the function without sending OTP email
-      }
-      else {
+      } else {
         // If validations pass, show OTP input
-        // if (passwordPattern.test(credentials.password) && emailPattern.test(credentials.email) && (!credentials.phone || phonePattern.test(credentials.phone))) {
-          setShowOtpInput(true);  // Displaying OTP input
-        // }
-        // console.log("false existence")
+        setShowOtpInput(true);  // Displaying OTP input
       }
     } catch (error) {
       console.error("Error checking customer existence:", error);
@@ -180,11 +175,7 @@ const validatePassword = (password: any) => {
     resetField("email")
     resetField("phone")
     resetField("password")
-    
-
-    // reset(); // This line will clear all the fields in the form controlled by React Hook Form
   };
-  
 
   const formRef = useRef<HTMLFormElement>(null);  // Creating a ref for the form element
 
@@ -211,7 +202,7 @@ const validatePassword = (password: any) => {
             if (otp === generatedOTP) {
               setConsecutiveInvalidAttempts(0); // Reset the counter
               createCustomer(credentials);
-              } else {
+            } else {
               setConsecutiveInvalidAttempts((prevCount) => prevCount + 1);
               if (consecutiveInvalidAttempts >= 2) {
                 // Navigate to /account when three consecutive invalid attempts are reached
@@ -258,104 +249,91 @@ const validatePassword = (password: any) => {
                   className={`custom-input wide-input ${errors.first_name ? 'error-border pt-4 pb-1 block w-full h-11 px-4 mt-0' : "pt-3 pb-0 block w-full h-11 px-4 -mt-0 bg-ui-bg-field border rounded-md appearance-none focus:outline-none focus:ring-0 focus:shadow-borders-interactive-with-active border-ui-border-base hover:bg-ui-bg-field-hover"
                     }`}
                   {...register("first_name", { required: "First name is required" ,
-                  pattern: {
-                    value: namePattern,
-                    message: "First name must contain only alphabetic characters"
-                  }
-                })}
+                    pattern: {
+                      value: namePattern,
+                      message: "First name must contain only alphabetic characters"
+                    }
+                  })}
                   autoComplete="given-name"
                   errors={errors}
-                  // touched={touchedFields}
-
                 />
                 {errors.first_name && <span className="error-icon">!</span>}
               </div>
               {errors.first_name && <span className="-mt-2 mb-3 pl-2 text-rose-500 text-xsmall-regular">{errors.first_name.message}</span>}
 
-
-
               {/* Last Name Input */}
               <div className="input-wrapper" style={{ position: 'relative' }}>
-
                 <Input
                   id="last_name"
                   label="Last Name"
                   className={`custom-input wide-input ${errors.last_name ? 'error-border pt-4 pb-1 block w-full h-11 px-4 mt-0' : "pt-4 pb-1 block w-full h-11 px-4 mt-0 bg-ui-bg-field border rounded-md appearance-none focus:outline-none focus:ring-0 focus:shadow-borders-interactive-with-active border-ui-border-base hover:bg-ui-bg-field-hover"}`}
                   {...register("last_name", { required: "Last name is required" ,
-                  pattern: {
-                    value: lastNamePattern,
-                    message: "First name must contain only alphabetic characters"
-                  }
-                })}
+                    pattern: {
+                      value: lastNamePattern,
+                      message: "Last name must contain only alphabetic characters"
+                    }
+                  })}
                   autoComplete="family-name"
                   errors={errors}
-                  // touched={touchedFields}
                 />
                 {errors.last_name && <span className="error-icon">!</span>}
               </div>
               {errors.last_name && <span className="-mt-2 mb-3 pl-2 text-rose-500 text-xsmall-regular">{errors.last_name.message}</span>}
-              <div className="input-wrapper" style={{ position: 'relative' }}>
 
+              <div className="input-wrapper" style={{ position: 'relative' }}>
                 <Input
                   label="Email"
                   id="email"
                   className={`custom-input wide-input ${errors.email ? 'error-border pt-4 pb-1 block w-full h-11 px-4 mt-0' : "pt-4 pb-1 block w-full h-11 px-4 mt-0 bg-ui-bg-field border rounded-md appearance-none focus:outline-none focus:ring-0 focus:shadow-borders-interactive-with-active border-ui-border-base hover:bg-ui-bg-field-hover"}`}
                   {...register("email", { required: "Email is required",
-                  pattern: {
-                    value: emailPattern,
-                    message: "Please enter a valid email"
-                  }
-                })}
+                    pattern: {
+                      value: emailPattern,
+                      message: "Please enter a valid email"
+                    }
+                  })}
                   autoComplete="email"
                   errors={errors}
-                  // touched={touchedFields}
-
                 />
                 {errors.email && <span className="error-icon">!</span>}
               </div>
               {errors.email && <span className="-mt-2 mb-3 pl-2 text-rose-500 text-xsmall-regular">{errors.email.message}</span>}
+
               <div className="input-wrapper" style={{ position: 'relative' }}>
                 <Input
-                label="Phone"
-                id="phone"
-                className={`custom-input wide-input ${errors.phone ? 'pt-4 pb-1 block w-full h-11 px-4 mt-0 error-border pt-4 pb-1 block w-full h-11 px-4 mt-0' : "pt-4 pb-1 block w-full h-11 px-4 mt-0 bg-ui-bg-field border rounded-md appearance-none focus:outline-none focus:ring-0 focus:shadow-borders-interactive-with-active border-ui-border-base hover:bg-ui-bg-field-hover"}`}
-                {...register("phone", {
-                  required: "Phone is required",
-                  pattern: {
-                    value: phoneNumberPattern,
-                    message: "Please enter phone number in format +91XXXXXXXXXX"
-                  }
-                })}
-                autoComplete="tel"
-                errors={errors}
-                defaultValue={"+91"}
-                // onChange={(e) => {
-                //   setValue('phone', e.target.value);
-                // }}
-                // touched={touchedFields}
-
+                  label="Phone"
+                  id="phone"
+                  className={`custom-input wide-input ${errors.phone ? 'pt-4 pb-1 block w-full h-11 px-4 mt-0 error-border pt-4 pb-1 block w-full h-11 px-4 mt-0' : "pt-4 pb-1 block w-full h-11 px-4 mt-0 bg-ui-bg-field border rounded-md appearance-none focus:outline-none focus:ring-0 focus:shadow-borders-interactive-with-active border-ui-border-base hover:bg-ui-bg-field-hover"}`}
+                  {...register("phone", {
+                    required: "Phone is required",
+                    pattern: {
+                      value: phoneNumberPattern,
+                      message: "Please enter phone number in format +91XXXXXXXXXX"
+                    }
+                  })}
+                  autoComplete="tel"
+                  errors={errors}
+                  defaultValue={"+91"}
                 />
-
                 {errors.phone && <span className="error-icon">!</span>}
               </div>
               {errors.phone && <span className="-mt-2 mb-3 pl-2 text-rose-500 text-xsmall-regular">{errors.phone.message}</span>}
+
               <div className="input-wrapper" style={{ position: 'relative' }}>
-        <Input
-          label="Password"
-          id="password"
-          className={`custom-input wide-input ${errors.password ? 'error-border pt-4 pb-1 block w-full h-11 px-4 mt-0' : "pt-4 pb-1 block w-full h-11 px-4 mt-0 bg-ui-bg-field border rounded-md appearance-none focus:outline-none focus:ring-0 focus:shadow-borders-interactive-with-active border-ui-border-base hover:bg-ui-bg-field-hover"}`}
-          {...register("password", {
-            required: "Password is required",
-            validate: validatePassword
-          })}
-          type="password"
-          autoComplete="new-password"
-        />
-        {errors.password && <span className="error-icon">!</span>}
-      </div>
-      {errors.password && <span className="-mt-2 mb-3 pl-2 text-rose-500 text-xsmall-regular">{errors.password.message}</span>}
-      {/* ... other parts of the form */}
-    </div>
+                <Input
+                  label="Password"
+                  id="password"
+                  className={`custom-input wide-input ${errors.password ? 'error-border pt-4 pb-1 block w-full h-11 px-4 mt-0' : "pt-4 pb-1 block w-full h-11 px-4 mt-0 bg-ui-bg-field border rounded-md appearance-none focus:outline-none focus:ring-0 focus:shadow-borders-interactive-with-active border-ui-border-base hover:bg-ui-bg-field-hover"}`}
+                  {...register("password", {
+                    required: "Password is required",
+                    validate: validatePassword
+                  })}
+                  type="password"
+                  autoComplete="new-password"
+                />
+                {errors.password && <span className="error-icon">!</span>}
+              </div>
+              {errors.password && <span className="-mt-2 mb-3 pl-2 text-rose-500 text-xsmall-regular">{errors.password.message}</span>}
+            </div>
             {authError && (
               <div>
                 <span className="text-rose-500 w-full text-small-regular">
@@ -377,15 +355,11 @@ const validatePassword = (password: any) => {
             <div className="button-container flex w-full mt-6 gap-2">
               <Button className="flex-grow" style={{ flexBasis: '75%' }}>Join</Button>
               <Button variant="secondary" type="reset" onClick={handleClearForm} className="flex-grow" style={{ flexBasis: '25%' }}>Clear</Button>
-
             </div>
-
           </form>
 
           <span className="text-center text-gray-700 text-small-regular mt-6">
             Already a member?{" "}
-
-
             <button
               onClick={() => setCurrentView(LOGIN_VIEW.SIGN_IN)}
               className="underline mt-5"
@@ -394,7 +368,6 @@ const validatePassword = (password: any) => {
             </button>
             .
           </span>
-          {/* Clear Button */}
         </div>
       )}
       <style>
@@ -435,7 +408,6 @@ const validatePassword = (password: any) => {
   }
   `}
       </style>
-
     </div>
   );
 }

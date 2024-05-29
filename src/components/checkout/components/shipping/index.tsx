@@ -7,7 +7,8 @@ import { useForm } from "react-hook-form"
 import { RadioGroup } from "@headlessui/react"
 import Radio from "@/components/common/components/radio"
 import { ErrorMessage } from "@hookform/error-message"
-import { formatAmount, useCart, useCartShippingOptions } from "medusa-react"
+import {  useCart, useCartShippingOptions } from "medusa-react"
+import { formatAmount } from "@/lib/util/prices"
 import { useEffect, useMemo, useState } from "react"
 import { Cart } from "@medusajs/medusa"
 import axios from 'axios';
@@ -278,6 +279,7 @@ useEffect(() => {
   console.log('Form errors:', errors);
 }, [errors]);
 
+// console.log(' cart.shipping_methods[0].price',  cart.shipping_methods[0].price)
   return (
     <div className="bg-white p-4 small:px-8">
       <div className="flex flex-row items-center justify-between mb-6">
@@ -394,7 +396,7 @@ useEffect(() => {
                     region: cart.region,
                   })
                     .replace(/,/g, "")
-                    .replace(/\./g, ",")}
+                    .replace(/\./g, ".")}
                   )
                 </Text>
               </div>
