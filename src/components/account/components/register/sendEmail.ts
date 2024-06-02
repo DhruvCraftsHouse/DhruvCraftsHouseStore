@@ -44,8 +44,8 @@ export const sendEmail = async (credentials: any) => {
       html: `
         <div style="background-color: #8a5436; color: #522a14; padding: 50px; text-align: center;">
           <div style="background-color: #fafafa; color: #522a14; padding: 50px; text-align: center;">
-            <img src="https://www.kamyaarts.com/cdn/shop/files/IMG_3719.jpg?v=1696598913&width=390" alt="Kamyaarts Logo" style="width: 500px; height: auto;">
-            <h1 style="font-weight: 500; margin-bottom: 20px; font-style: italic; font-size: 26px;">Welcome to Kamyaarts, ${first_name}.</h1>
+            <img src="https://www.kamyaarts.com/cdn/shop/files/IMG_3719.jpg?v=1696598913&width=390" alt="Dhruv Crafts House Logo" style="width: 500px; height: auto;">
+            <h1 style="font-weight: 500; margin-bottom: 20px; font-style: italic; font-size: 26px;">Welcome to Dhruv Crafts House, ${first_name}.</h1>
             <p style="font-weight: bold; margin-bottom: 20px; font-size: 26px;"> We're glad to have you on board.</p>
           </div>
         </div>

@@ -5,6 +5,7 @@ import Spinner from "@/components/common/icons/spinner"
 import BillingAddress from "../billing_address"
 import ShippingAddress from "../shipping-address"
 import Divider from "@/components/common/components/divider"
+import SignInPrompt from "@/components/cart/components/sign-in-prompt"
 
 const Addresses = () => {
   const {
@@ -47,7 +48,7 @@ const Addresses = () => {
         <div className="pb-8">
           <ShippingAddress checked={checked} onChange={onChange} />
 
-          {!checked && (
+          {/* {!checked && (
             <div>
               <Heading
                 level="h2"
@@ -58,7 +59,7 @@ const Addresses = () => {
 
               <BillingAddress />
             </div>
-          )}
+          )} */}
 
           <Button
             size="large"

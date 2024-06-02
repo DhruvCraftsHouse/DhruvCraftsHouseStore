@@ -56,11 +56,11 @@ const handleLinkClick = (targetPath: string) => {
       {isNavigating && <LoadingSpinner />}
     <div className="h-full z-50" onMouseEnter={open} onMouseLeave={close}>
       <Popover className="relative h-full">
-      <Popover.Button className="h-full ml-1">
+      <Popover.Button className="h-full mr-6">
           <div style={{ width: '80px'}}>
             {/* Check if customer exists */}
             {customer ? (
-              <div>
+              <div style={{width:"100px"}}>
                 Hello,<span style={{ fontWeight: 'bold' }}>{customer.first_name}</span>
                 <br />
                 {customer.billing_address?.postal_code && (

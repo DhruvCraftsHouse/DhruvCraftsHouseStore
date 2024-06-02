@@ -2,7 +2,7 @@ import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import { NextPage } from "next"
 import { AppProps } from "next/app"
 import { ReactElement, ReactNode } from "react"
-import { Region } from "@medusajs/medusa"
+import { Region, Cart } from "@medusajs/medusa"
 
 export type CollectionData = {
   id: string
@@ -10,6 +10,12 @@ export type CollectionData = {
 }
 export type RegionInfo = Pick<Region, "currency_code" | "tax_code" | "tax_rate">
 
+export type CartWithCheckoutStep = Omit<
+  Cart,
+  "beforeInsert" | "beforeUpdate" | "afterUpdateOrLoad"
+> & {
+  checkout_step: "address" | "delivery" | "payment"
+}
 
 export type FeaturedProduct = {
   id: string

@@ -282,8 +282,9 @@ useEffect(() => {
 // console.log(' cart.shipping_methods[0].price',  cart.shipping_methods[0].price)
   return (
     <div className="bg-white p-4 small:px-8">
+            <ToastContainer />
+
       <div className="flex flex-row items-center justify-between mb-6">
-      <ToastContainer />
 
         <Heading
           level="h2"

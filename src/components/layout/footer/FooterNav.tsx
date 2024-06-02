@@ -285,7 +285,7 @@ const FooterNav = () => {
             <div className="mt-1" style={{color:"#7F3F98", fontWeight: "bolder",letterSpacing:"0.2em", fontFamily:"Avenir Next LT W02 Regular", fontSize:"10px"}}> <span style={{fontWeight: 900}}>(+91) 7259533331</span></div>
             <div className="mt-4" style={{fontSize:"9px"}}>CUSTOMER SERVICE</div>
             <div className="mt-1"  style={{color:"#713787", fontWeight: "bolder",letterSpacing:"0.2em", fontFamily:"Avenir Next LT W02 Regular", fontSize:"10px", textTransform:"uppercase"}}>
-              <a href="mailto:vikram@rflabs.in" >vikram@rflabs.in</a>
+              <a href="mailto:dhruvcraftshouse@gmail.com" >dhruvcraftshouse@gmail.com</a>
             </div>
             <div className="social-media-links mt-5" style={{ display: 'flex', gap: '30px' }}>
   <a href="mailto:example@email.com" aria-label="Email">

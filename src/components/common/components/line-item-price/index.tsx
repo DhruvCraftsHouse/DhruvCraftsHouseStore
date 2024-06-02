@@ -15,12 +15,11 @@ const LineItemPrice = ({
   region,
   style = "default",
 }: LineItemPriceProps) => {
-  const originalPrice =
-    (item.variant as CalculatedVariant).original_price * item.quantity
+  const originalPrice = (item.variant as CalculatedVariant)?.original_price 
+    ? (item.variant as CalculatedVariant).original_price * item.quantity
+    : 0;
   const hasReducedPrice = (item.total || 0) < originalPrice
 
-  // console.log('item', item)
-  // console.log('item.total', item.total)
   return (
     <div className="flex flex-col gap-x-2 text-ui-fg-subtle items-end">
       <div className="text-left">

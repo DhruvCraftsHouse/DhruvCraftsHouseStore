@@ -47,15 +47,13 @@ type ListItem = {
 
 const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 });
 
-
 const Item = ({ item, region, type = "full" }: ItemProps) => {
   const { updateItem, deleteItem } = useStore()
-  const { handle } = item.variant.product
+  const handle = item.variant?.product?.handle || "";
   //initialize states for moveToWishlist functionality for cart items
   const [isHovering, setIsHovering] = useState(false);
-  const { customerId, setCustomerId,totalItems,setTotalItems} = useWishlistDropdownContext();
+  const { customerId, setCustomerId, totalItems, setTotalItems } = useWishlistDropdownContext();
   const { listItems, setListItems } = useWishlistDropdownContext();
-
 
   const { customer } = useAccount();
 
@@ -79,14 +77,14 @@ const Item = ({ item, region, type = "full" }: ItemProps) => {
     // console.log("customer id ",customer?.id);
 
     // Check if the user is not signed in
-  if (!customer?.id) {
-    // Show a prompt asking the user to sign in
-    alert("Please sign in to remove items to your wishlist.");
-    return;
-  }
+    if (!customer?.id) {
+      // Show a prompt asking the user to sign in
+      alert("Please sign in to remove items to your wishlist.");
+      return;
+    }
 
     postToWishlist(customer?.id, customer?.email, id)
-    const response= await getWishList(customer?.id);
+    const response = await getWishList(customer?.id);
     // console.log("getWishlist at post ",response)
     setTotalItems(response.wishlist.length)
 
@@ -99,20 +97,17 @@ const Item = ({ item, region, type = "full" }: ItemProps) => {
     }
 
     deleteItem(itemId)
-
-   };
+  };
    
-   const transformThumbnailUrl = (url: string | null): string => {
+  const transformThumbnailUrl = (url: string | null): string => {
     if (!url) return '/default-thumbnail.jpg'; // Return a default image URL if no URL is provided
     return url.replace("http://localhost:9000/uploads", "https://dhruvcraftshouse.com/backend/uploads");
   };
-  
-  
-  //  console.log('item.thumbnail', item.thumbnail)
-//included returned display code with additional display of discounts and moveToWishlist button
-   return (
-    <Table.Row className="w-full">
 
+  //  console.log('item.thumbnail', item.thumbnail)
+  //included returned display code with additional display of discounts and moveToWishlist button
+  return (
+    <Table.Row className="w-full">
       <Table.Cell className="!pl-0 p-4 w-24">
         <Link
           href={`/products/${handle}`}
@@ -128,18 +123,17 @@ const Item = ({ item, region, type = "full" }: ItemProps) => {
       <Table.Cell className="text-left">
         <Text className="txt-medium-plus text-ui-fg-base">{item.title}</Text>
         <LineItemOptions variant={item.variant} />
-        {/* {item.variant.product.buy_get_offer && (
-           <Text className="txt-medium-plus text-ui-fg-base" style={{color:"green"}}>Buy {item.variant.product.buy_get_num} Get {item.variant.product.buy_get_offer}% off using code: &quot;{item.variant.product.discountCode}&quot;</Text>
-        )} */}
-
-
+        {item.variant?.sku && (
+          <Text className="txt-medium-plus text-ui-fg-base">Style Number : {item.variant.sku}</Text>
+        )}
+        {item.variant?.product?.buy_get_offer && (
+          <Text className="txt-medium-plus text-ui-fg-base" style={{ color: "green" }}>Buy {item.variant.product.buy_get_num} Get {item.variant.product.buy_get_offer}% off</Text>
+        )}
       </Table.Cell>
 
       {type === "full" && (
         <Table.Cell>
           <div className="flex gap-2">
-          
-
             <CartItemSelect
               value={item.quantity}
               onChange={(value) =>
@@ -153,7 +147,7 @@ const Item = ({ item, region, type = "full" }: ItemProps) => {
               {Array.from(
                 [
                   ...Array(
-                    item.variant.inventory_quantity > 0
+                    item.variant?.inventory_quantity > 0
                       ? item.variant.inventory_quantity
                       : 10
                   ),
@@ -174,16 +168,14 @@ const Item = ({ item, region, type = "full" }: ItemProps) => {
               onClick={() => deleteItem(item.id)}
             >
               <Trash size={18} /> 
-              
             </button>
             <button
- className="flex items-center gap-x-"
- title="Move to wishlist"
- onClick={() => moveToWishlist(item.variant_id, item.id)}
-
->
- <Wishlist fill=""/>
-</button>
+              className="flex items-center gap-x-"
+              title="Move to wishlist"
+              onClick={() => moveToWishlist(item.variant_id, item.id)}
+            >
+              <Wishlist fill=""/>
+            </button>
           </div>
         </Table.Cell>
       )}

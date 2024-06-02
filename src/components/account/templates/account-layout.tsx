@@ -30,7 +30,7 @@ const AccountLayout: React.FC<{ children?: ReactNode }> = ({ children }) => {
           </div>
           <div className="flex-1">{children}</div>
         </div>
-        <div className="flex flex-col small:flex-row items-end justify-between small:border-t border-gray-200 px-8 py-12 gap-x-8">
+        {/* <div className="flex flex-col small:flex-row items-end justify-between small:border-t border-gray-200 px-8 py-12 gap-x-8">
           <div>
             <h3 className="text-xl-semi mb-4">Got questions?</h3>
             <span className="text-small-regular">
@@ -43,7 +43,7 @@ const AccountLayout: React.FC<{ children?: ReactNode }> = ({ children }) => {
               Customer Service
             </UnderlineLink>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

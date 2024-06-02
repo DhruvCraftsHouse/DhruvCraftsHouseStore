@@ -25,7 +25,7 @@ const SecondPage = () => {
         Coimbatore - 641005
 </Heading>
 <Heading level="h1" style={{ fontFamily: "Times New Roman,serif",color:"#7F3F98", fontWeight: 500, fontSize:"16px", fontStyle:"italic", textDecoration:"underline"}}>
-vikram@rflabs.in
+dhruvcraftshouse@gmail.com
 </Heading>
 <Heading level="h1" style={{ fontFamily: "AvenirNextCyr-Regular",color:"black", fontWeight: 500, fontSize:"16px", letterSpacing:"0.01em"}}>
 Tel: (+91) 7259533331

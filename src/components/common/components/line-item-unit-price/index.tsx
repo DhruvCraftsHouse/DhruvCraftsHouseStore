@@ -15,10 +15,10 @@ const LineItemUnitPrice = ({
   region,
   style = "default",
 }: LineItemUnitPriceProps) => {
-  const originalPrice = (item.variant as CalculatedVariant).original_price;
-  const hasReducedPrice = (originalPrice * item.quantity || 0) > item.total!;
-  const reducedPrice = (item.total || 0) / item.quantity!;
-  const taxPerUnit = (item.tax_total || 0) / item.quantity!;
+  const originalPrice = (item.variant as CalculatedVariant)?.original_price || 0;
+  const hasReducedPrice = (originalPrice * item.quantity || 0) > (item.total || 0);
+  const reducedPrice = (item.total || 0) / (item.quantity || 1);
+  const taxPerUnit = (item.tax_total || 0) / (item.quantity || 1);
 
   const adjustedReducedPrice = reducedPrice - taxPerUnit;
   const adjustedUnitPrice = (item.unit_price || 0) - taxPerUnit;

@@ -12,9 +12,9 @@ type LineItemOptionsProps = { variant: ProductVariant }
 const LineItemOptions = ({ variant }: LineItemOptionsProps) => {
   return (
     <>
-      {variant.options?.map((option) => {
+      {variant?.options?.map((option) => {
         const optionName =
-          variant.product.options.find((opt: ProductOption) => opt.id === option.option_id)
+          variant.product?.options?.find((opt: ProductOption) => opt.id === option.option_id)
             ?.title || "Option"
         return (
           <Text key={option.id} className="txt-medium text-ui-fg-subtle">

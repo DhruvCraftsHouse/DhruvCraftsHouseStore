@@ -21,6 +21,12 @@ const OrderCard = ({ order }: OrderCardProps) => {
   }, [order])
 
   console.log('order.items', order.items)
+  const convertThumbnailUrl = (url: string): string => {
+    if (!url) return '';
+    const baseUrl = 'https://dhruvcraftshouse.com/backend/uploads/';
+    const filename = url.split('/').pop() || ''; // Ensure filename is not undefined
+    return `${baseUrl}${filename}`;
+  };
 
   return (
     <div className="bg-white flex flex-col">
@@ -44,7 +50,7 @@ const OrderCard = ({ order }: OrderCardProps) => {
         {order.items.slice(0, 3).map((i) => {
           return (
             <div key={i.id} className="flex flex-col gap-y-2">
-              <Thumbnail thumbnail={i.thumbnail} images={[]} size="full" />
+              <Thumbnail thumbnail={convertThumbnailUrl(i.thumbnail || '')} images={[]} size="full" />
               <div className="flex items-center text-small-regular text-gray-700">
                 <span className="text-gray-900 font-semibold">{i.title}</span>
                 <span className="ml-2">x</span>

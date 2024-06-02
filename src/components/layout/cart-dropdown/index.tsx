@@ -21,17 +21,14 @@ const CartDropdown = () => {
     if (!url) return '/default-thumbnail.jpg'; // Return a default image URL if no URL is provided
     return url.replace("http://localhost:9000/uploads", "https://dhruvcraftshouse.com/backend/uploads");
   };
-  
-  
-  // console.log('items cart', items)
+
   return (
     <div className="h-full z-50" onMouseEnter={open} onMouseLeave={close}>
       <Popover className="relative h-full">
         <Popover.Button className="h-full">
-          <Link
-            className=""
-            href="/cart"
-          >{`Cart (${totalItems})`}</Link>
+          <Link className="" href="/cart">
+            {`Cart (${totalItems})`}
+          </Link>
         </Popover.Button>
         <Transition
           show={state}
@@ -62,22 +59,26 @@ const CartDropdown = () => {
                         className="grid grid-cols-[122px_1fr] gap-x-4"
                         key={item.id}
                       >
-                        <Link
-                          href={`/products/${item.variant.product.handle}`}
-                          className="w-24"
-                        >
-      <Thumbnail thumbnail={transformThumbnailUrl(item.thumbnail)} size="square" />
-                        </Link>
+                        {item.variant && item.variant.product && (
+                          <Link
+                            href={`/products/${item.variant.product.handle}`}
+                            className="w-24"
+                          >
+                            <Thumbnail thumbnail={transformThumbnailUrl(item.thumbnail)} size="square" />
+                          </Link>
+                        )}
                         <div className="flex flex-col justify-between flex-1">
                           <div className="flex flex-col flex-1">
                             <div className="flex items-start justify-between">
                               <div>
                                 <h3 className="text-base-regular overflow-ellipsis overflow-hidden whitespace-nowrap mr-4 w-[130px]">
-                                  <Link
-                                    href={`/products/${item.variant.product.handle}`}
-                                  >
-                                    {item.title}
-                                  </Link>
+                                  {item.variant && item.variant.product && (
+                                    <Link
+                                      href={`/products/${item.variant.product.handle}`}
+                                    >
+                                      {item.title}
+                                    </Link>
+                                  )}
                                 </h3>
                                 <></>
                                 <LineItemOptions variant={item.variant} />

@@ -19,7 +19,6 @@ import ProductDescription from "./product-description";
 import ImageVariant from "../components/image-variant"; // Import the ImageVariant component
 import axios from 'axios';
 
-
 type ProductTemplateProps = {
   product: PricedProduct;
 };
@@ -57,29 +56,20 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
     const fetchVariantImages = async () => {
       setVariantImages([]); // Clear variant images at the start
       let images = [];
-      let hasImageUrls = false;
 
-      for (const option of selectedVariant.options) {
-        try {
-          const response = await axios.get(`${MEDUSA_BACKEND_URL}/store/variantimage`, {
-            params: { value_id: option.id }
-          });
-          if (response.data.data.length > 0 && response.data.data[0].image_urls) {
-            hasImageUrls = true;
-            console.log('response.data.data', response.data.data);
-            images = response.data.data[0].image_urls.map(url => ({ id: option.id, url }));
-            break; // if we get images for one option, break the loop
-          }
-        } catch (error) {
-          console.error('Error fetching images:', error);
+      try {
+        const response = await axios.get(`${MEDUSA_BACKEND_URL}/store/variantimages`, {
+          params: { variant_id: selectedVariant.id }
+        });
+        if (response.data.data.length > 0 && response.data.data[0].image_urls) {
+          console.log('response.data.data', response.data.data);
+          images = response.data.data[0].image_urls.map(url => ({ id: selectedVariant.id, url }));
         }
+      } catch (error) {
+        console.error('Error fetching images:', error);
       }
 
-      if (hasImageUrls) {
-        setVariantImages(images);
-      } else {
-        setVariantImages([]); // Clear variant images if no URLs are found
-      }
+      setVariantImages(images);
     };
 
     if (selectedVariant) {
