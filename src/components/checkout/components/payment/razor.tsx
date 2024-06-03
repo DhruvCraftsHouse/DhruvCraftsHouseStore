@@ -91,6 +91,8 @@ const PhonePeButton = ({ notReady }: { notReady: boolean }) => {
         setTransactionId(merchantTransactionId);
         console.log(`Response from PhonePe from : ${MEDUSA_BACKEND_URL}/store/payment`, response);
         console.log('response.data.data.instrumentResponse.redirectInfo.url', response.data.data.instrumentResponse.redirectInfo.url)
+        onPaymentCompleted();
+
         window.open(response.data.data.instrumentResponse.redirectInfo.url, '_blank');
 
         setButtonText('Processing Payment...');
@@ -126,7 +128,7 @@ const PhonePeButton = ({ notReady }: { notReady: boolean }) => {
               setShowModal(true);
               setIsSuccess(true);
               setModalMessage('Payment successful.');
-              clearInterval(pollingInterval);
+              // clearInterval(pollingInterval);
               setButtonText('Paid');
               onPaymentCompleted();
               break;
@@ -137,23 +139,26 @@ const PhonePeButton = ({ notReady }: { notReady: boolean }) => {
                 setModalMessage('Payment failed or timed out. Please try again.');
               console.log('Payment failed or timed out.');
               setButtonText('Pay Now');
-              clearInterval(pollingInterval);
+              onPaymentCompleted();
+              // clearInterval(pollingInterval);
               break;
             case 'PAYMENT_PENDING':
                 setButtonText('Paying...');
+                onPaymentCompleted();
               console.log('Payment still pending.');
               break;
             default:
                 setIsSuccess(false);
                 setShowModal(true);
+                onPaymentCompleted();
                 setModalMessage('Unknown payment status. Please try again.');
               console.log('Unknown status:', statusResponse.data.code);
-              clearInterval(pollingInterval);
+              // clearInterval(pollingInterval);
               break;
           }
         } catch (error) {
           console.error('Error checking payment status:', error);
-          clearInterval(pollingInterval);
+          // clearInterval(pollingInterval);
         }
     };
 
