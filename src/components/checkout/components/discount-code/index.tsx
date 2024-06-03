@@ -9,6 +9,7 @@ import { formatAmount, useCart, useUpdateCart } from "medusa-react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { MEDUSA_BACKEND_URL } from "@/lib/config";
 
 type DiscountFormValues = {
   discount_code: string;
@@ -61,7 +62,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
   
     try {
       const discountListResponse = await axios.get(
-        "https://dhruvcraftshouse.com/backend/store/discountlist",
+        `${MEDUSA_BACKEND_URL}/store/discountlist`,
         {
           params: {
             discountCode: data.discount_code,
@@ -112,7 +113,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
   
       // Only fetch products and check eligibility if there is a specific condition ID
       if (conditionId && discountId) {
-        const productDiscountResponse = await axios.get(`https://dhruvcraftshouse.com/backend/store/productDiscount`, {
+        const productDiscountResponse = await axios.get(`${MEDUSA_BACKEND_URL}/store/productDiscount`, {
           params: {
             discount_id: discountId,
             conditionId: conditionId,
